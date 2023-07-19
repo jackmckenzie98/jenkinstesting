@@ -1,0 +1,18 @@
+{
+  "oauthClients":
+  {
+    "endpoint": "/oauth/clients"
+  },
+  "idpAdapters":
+  {
+    "endpoint": "/sp/adapters"
+  },
+  "authPolicies":
+  {
+    "endpoint": "/authenticationPolicies/default"
+  },
+  "spConnections":
+  {
+    "endpoint": "/idp/spConnections"
+  }
+}

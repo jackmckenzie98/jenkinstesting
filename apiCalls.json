@@ -5,7 +5,7 @@
   },
   "idpAdapters":
   {
-    "endpoint": "/sp/adapters"
+    "endpoint": "/idp/adapters"
   },
   "authPolicies":
   {

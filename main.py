@@ -40,16 +40,20 @@ final_path = os.path.join(file_path, r'artifactsPull')
 if not os.path.exists(final_path):
     os.makedirs(os.path.join(file_path, r'artifactsPull'))
 def make_calls():
-    global clients, spConnections, authPolicies, idpAdapters
+    global clients, spConnections, authPolicies, idpAdapters, passwordCVs, accessTokenManagers, accessTokenMappings, dataStores
     get_secret()
     clients = session.get(base_url + endpoint["oauthClients"]["endpoint"]).json()
     spConnections = session.get(base_url + endpoint["spConnections"]["endpoint"]).json()
     authPolicies = session.get(base_url + endpoint["authPolicies"]["endpoint"]).json()
     idpAdapters = session.get(base_url + endpoint["idpAdapters"]["endpoint"]).json()
+    passwordCVs = session.get(base_url + endpoint["passwordCredentialValidators"]["endpoint"]).json()
+    accessTokenManagers = session.get(base_url + endpoint["accessTokenManagers"]["endpoint"]).json()
+    accessTokenMappings = session.get(base_url + endpoint["accessTokenMappings"]["endpoint"]).json()
+    dataStores = session.get(base_url + endpoint["dataStores"]["endpoint"]).json()
 
 def write_to_file():
-    list_thing = [clients, spConnections, authPolicies, idpAdapters]
-    file_names = ["clients", "spConnections", "authPolicies", "idpAdapters"]
+    list_thing = [clients, spConnections, authPolicies, idpAdapters, passwordCVs, accessTokenManagers, accessTokenMappings, dataStores]
+    file_names = ["clients", "spConnections", "authPolicies", "idpAdapters", "passwordCredentialValidators", "accessTokenManagers", "accessTokenMappings", "dataStores"]
     for name, obj in zip(file_names, list_thing):
         f = open(f"{final_path}/{name}.json", 'w+')
         f.write(json.dumps(obj, indent=3))

@@ -14,5 +14,21 @@
   "spConnections":
   {
     "endpoint": "/idp/spConnections"
+  },
+  "passwordCredentialValidators":
+  {
+    "endpoint": "/passwordCredentialValidators"
+  },
+  "accessTokenManagers":
+  {
+	  "endpoint": "/oauth/accessTokenManagers"
+  },
+  "accessTokenMappings":
+  {
+	  "endpoint": "/oauth/accessTokenMappings"
+  },
+  "dataStores":
+  {
+	  "endpoint": "/dataStores"
   }
 }

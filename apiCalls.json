@@ -27,6 +27,10 @@
   {
 	  "endpoint": "/oauth/accessTokenMappings"
   },
+  "authPolicyContracts":
+  {
+	  "endpoint": "/authenticationPolicyContracts"
+  },
   "dataStores":
   {
 	  "endpoint": "/dataStores"

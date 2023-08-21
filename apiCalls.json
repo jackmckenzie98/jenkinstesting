@@ -34,5 +34,9 @@
   "dataStores":
   {
 	  "endpoint": "/dataStores"
+  },
+  "keyPairs":
+  {
+    "endpoint": "/keyPairs/signing"
   }
 }

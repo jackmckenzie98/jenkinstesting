@@ -69,6 +69,7 @@ def write_to_file():
         f.write(json.dumps(obj, indent=3))
         f.close()
 
+
 write_to_file()
 
 

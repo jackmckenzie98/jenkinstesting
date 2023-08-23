@@ -1,0 +1,40 @@
+[
+   {
+      "attributeSources": [
+         {
+            "type": "JDBC",
+            "dataStoreRef": {
+               "id": "ProvisionerDS",
+               "location": "https://debian-pingfed:9999/pf-admin-api/v1/dataStores/ProvisionerDS"
+            },
+            "id": "PCV",
+            "description": "PCV",
+            "schema": "INFORMATION_SCHEMA",
+            "table": "ADMINISTRABLE_ROLE_AUTHORIZATIONS",
+            "filter": "${USER_KEY}",
+            "columnNames": [
+               "GRANTEE"
+            ]
+         }
+      ],
+      "attributeContractFulfillment": {
+         "attribute": {
+            "source": {
+               "type": "TEXT"
+            },
+            "value": "value"
+         }
+      },
+      "issuanceCriteria": {
+         "conditionalCriteria": []
+      },
+      "id": "default|jackATM",
+      "context": {
+         "type": "DEFAULT"
+      },
+      "accessTokenManagerRef": {
+         "id": "jackATM",
+         "location": "https://debian-pingfed:9999/pf-admin-api/v1/oauth/accessTokenManagers/jackATM"
+      }
+   }
+]

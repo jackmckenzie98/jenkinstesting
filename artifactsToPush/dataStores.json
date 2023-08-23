@@ -1,0 +1,59 @@
+{
+   "items": [
+      {
+         "type": "JDBC",
+         "id": "ProvisionerDS",
+         "maskAttributeValues": false,
+         "connectionUrl": "jdbc:hsqldb:${pf.server.data.dir}${/}hypersonic${/}ProvisionerDefaultDB;hsqldb.lock_file=false",
+         "driverClass": "org.hsqldb.jdbcDriver",
+         "userName": "sa",
+         "encryptedPassword": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiVEZGZmNIUndlRCIsInZlcnNpb24iOiIxMS4yLjUuMCJ9..5mqfcaSKNixV_q42ki4bxA.dtNR29miltwjjuzaqn6Fcg.sQSKAE2bPNObzymUeGL6BQ",
+         "allowMultiValueAttributes": false,
+         "name": "ProvisionerDS (sa)",
+         "connectionUrlTags": [
+            {
+               "connectionUrl": "jdbc:hsqldb:${pf.server.data.dir}${/}hypersonic${/}ProvisionerDefaultDB;hsqldb.lock_file=false",
+               "defaultSource": true
+            }
+         ]
+      },
+      {
+         "type": "LDAP",
+         "id": "LDAP-9C0F7B8140022366337FA96754B231F734D25CA2",
+         "maskAttributeValues": false,
+         "hostnames": [
+            "JackMacLocal-DC"
+         ],
+         "ldapType": "ACTIVE_DIRECTORY",
+         "bindAnonymously": false,
+         "userDN": "CN=Administrator,CN=Users,DC=jackmaclab,DC=local",
+         "encryptedPassword": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiVEZGZmNIUndlRCIsInZlcnNpb24iOiIxMS4yLjUuMCJ9..KVfJp0R5G457Bwt3s49INg.JowbFoGs7h9LsDiBWL918g.ZFsagItvGQGMYPOko3uHPg",
+         "useSsl": false,
+         "useDnsSrvRecords": false,
+         "followLDAPReferrals": false,
+         "name": "Test Data Store",
+         "hostnamesTags": [
+            {
+               "hostnames": [
+                  "JackMacLocal-DC"
+               ],
+               "defaultSource": true
+            }
+         ],
+         "testOnBorrow": false,
+         "testOnReturn": false,
+         "createIfNecessary": true,
+         "verifyHost": true,
+         "minConnections": 10,
+         "maxConnections": 100,
+         "maxWait": -1,
+         "timeBetweenEvictions": 60000,
+         "readTimeout": 3000,
+         "connectionTimeout": 3000,
+         "binaryAttributes": [],
+         "dnsTtl": 60000,
+         "ldapDnsSrvPrefix": "_ldap._tcp",
+         "ldapsDnsSrvPrefix": "_ldaps._tcp"
+      }
+   ]
+}

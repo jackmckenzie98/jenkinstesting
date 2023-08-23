@@ -44,8 +44,6 @@ if not os.path.exists(final_path):
 if not os.path.exists(cert_path):
     os.makedirs(os.path.join(final_path, f'certs'))
 def make_calls():
-    global clients, spConnections, authPolicies, authenticationPolicyFragments, idpAdapters, passwordCVs, accessTokenManagers, accessTokenMappings,\
-        authPolicyContracts, dataStores, keyPairs
     get_secret('debian-pf-api-secret')
     clients = session.get(migrate_from + endpoint["oauthClients"]["endpoint"]).json()
     spConnections = session.get(migrate_from + endpoint["spConnections"]["endpoint"]).json()
@@ -59,10 +57,11 @@ def make_calls():
     keyPairs = session.get(migrate_from + endpoint["keyPairs"]["endpoint"]).json()
     authenticationPolicyFragments = session.get(migrate_from +
                                                 endpoint["authenticationPolicyFragments"]["endpoint"]).json()
+    return [clients, spConnections, authPolicies, authenticationPolicyFragments, idpAdapters, passwordCVs, accessTokenManagers, accessTokenMappings,\
+        authPolicyContracts, dataStores, keyPairs]
 
 def write_to_file():
-    list_thing = [clients, spConnections, authPolicies, authenticationPolicyFragments, idpAdapters, passwordCVs, accessTokenManagers,
-                  accessTokenMappings, authPolicyContracts, dataStores, keyPairs]
+    list_thing = make_calls()
     file_names = ["clients", "spConnections", "authPolicies", "authenticationPolicyFragments", "idpAdapters", "passwordCredentialValidators",
                   "accessTokenManagers", "accessTokenMappings", "authPolicyContracts", "dataStores", "keyPairs"]
     for name, obj in zip(file_names, list_thing):
@@ -70,7 +69,6 @@ def write_to_file():
         f.write(json.dumps(obj, indent=3))
         f.close()
 
-make_calls()
 write_to_file()
 
 

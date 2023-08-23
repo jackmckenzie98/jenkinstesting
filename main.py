@@ -8,7 +8,7 @@ import json
 import os
 import boto3
 
-base_url = "https://debian-pingfed:9999/pf-admin-api/v1"
+migrate_from = "https://debian-pingfed:9999/pf-admin-api/v1"
 
 #Pull secret from secrets manager
 def get_secret(secret_name):
@@ -44,24 +44,26 @@ if not os.path.exists(final_path):
 if not os.path.exists(cert_path):
     os.makedirs(os.path.join(final_path, f'certs'))
 def make_calls():
-    global clients, spConnections, authPolicies, idpAdapters, passwordCVs, accessTokenManagers, accessTokenMappings,\
+    global clients, spConnections, authPolicies, authenticationPolicyFragments, idpAdapters, passwordCVs, accessTokenManagers, accessTokenMappings,\
         authPolicyContracts, dataStores, keyPairs
     get_secret('debian-pf-api-secret')
-    clients = session.get(base_url + endpoint["oauthClients"]["endpoint"]).json()
-    spConnections = session.get(base_url + endpoint["spConnections"]["endpoint"]).json()
-    authPolicies = session.get(base_url + endpoint["authPolicies"]["endpoint"]).json()
-    idpAdapters = session.get(base_url + endpoint["idpAdapters"]["endpoint"]).json()
-    passwordCVs = session.get(base_url + endpoint["passwordCredentialValidators"]["endpoint"]).json()
-    accessTokenManagers = session.get(base_url + endpoint["accessTokenManagers"]["endpoint"]).json()
-    accessTokenMappings = session.get(base_url + endpoint["accessTokenMappings"]["endpoint"]).json()
-    authPolicyContracts = session.get(base_url + endpoint["authPolicyContracts"]["endpoint"]).json()
-    dataStores = session.get(base_url + endpoint["dataStores"]["endpoint"]).json()
-    keyPairs = session.get(base_url + endpoint["keyPairs"]["endpoint"]).json()
+    clients = session.get(migrate_from + endpoint["oauthClients"]["endpoint"]).json()
+    spConnections = session.get(migrate_from + endpoint["spConnections"]["endpoint"]).json()
+    authPolicies = session.get(migrate_from + endpoint["authPolicies"]["endpoint"]).json()
+    idpAdapters = session.get(migrate_from + endpoint["idpAdapters"]["endpoint"]).json()
+    passwordCVs = session.get(migrate_from + endpoint["passwordCredentialValidators"]["endpoint"]).json()
+    accessTokenManagers = session.get(migrate_from + endpoint["accessTokenManagers"]["endpoint"]).json()
+    accessTokenMappings = session.get(migrate_from + endpoint["accessTokenMappings"]["endpoint"]).json()
+    authPolicyContracts = session.get(migrate_from + endpoint["authPolicyContracts"]["endpoint"]).json()
+    dataStores = session.get(migrate_from + endpoint["dataStores"]["endpoint"]).json()
+    keyPairs = session.get(migrate_from + endpoint["keyPairs"]["endpoint"]).json()
+    authenticationPolicyFragments = session.get(migrate_from +
+                                                endpoint["authenticationPolicyFragments"]["endpoint"]).json()
 
 def write_to_file():
-    list_thing = [clients, spConnections, authPolicies, idpAdapters, passwordCVs, accessTokenManagers,
+    list_thing = [clients, spConnections, authPolicies, authenticationPolicyFragments, idpAdapters, passwordCVs, accessTokenManagers,
                   accessTokenMappings, authPolicyContracts, dataStores, keyPairs]
-    file_names = ["clients", "spConnections", "authPolicies", "idpAdapters", "passwordCredentialValidators",
+    file_names = ["clients", "spConnections", "authPolicies", "authenticationPolicyFragments", "idpAdapters", "passwordCredentialValidators",
                   "accessTokenManagers", "accessTokenMappings", "authPolicyContracts", "dataStores", "keyPairs"]
     for name, obj in zip(file_names, list_thing):
         f = open(f"{final_path}/{name}.json", 'w+')

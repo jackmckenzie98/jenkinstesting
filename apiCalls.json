@@ -11,6 +11,10 @@
   {
     "endpoint": "/authenticationPolicies/default"
   },
+  "authenticationPolicyFragments":
+  {
+    "endpoint": "/authenticationPolicies/fragments"
+  },
   "spConnections":
   {
     "endpoint": "/idp/spConnections"

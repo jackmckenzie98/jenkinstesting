@@ -1,0 +1,18 @@
+{
+   "items": [
+      {
+         "id": "OBVvfPs6s6jz8G4p",
+         "name": "Contract",
+         "coreAttributes": [
+            {
+               "name": "subject"
+            }
+         ],
+         "extendedAttributes": [
+            {
+               "name": "userPrincipalName"
+            }
+         ]
+      }
+   ]
+}

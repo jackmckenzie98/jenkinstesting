@@ -1,0 +1,20 @@
+{
+   "items": [
+      {
+         "id": "vn561yy2nrgg6xf6nvt4i2dxb",
+         "serialNumber": "1686244725725",
+         "subjectDN": "CN=SigningCert, O=JackTest, C=US",
+         "subjectAlternativeNames": [],
+         "issuerDN": "CN=SigningCert, O=JackTest, C=US",
+         "validFrom": "2023-06-08T17:18:45.000Z",
+         "expires": "2033-06-05T17:18:45.000Z",
+         "keyAlgorithm": "RSA",
+         "keySize": 2048,
+         "signatureAlgorithm": "SHA256withRSA",
+         "version": 3,
+         "sha1Fingerprint": "B4F8EE36E93FB425180AD63AE41E712AE7E42521",
+         "sha256Fingerprint": "322909D44A8E067116F3FFED9A859BE16F7A1C2CF00FDCE1AAEA7AB0889D00C0",
+         "status": "VALID"
+      }
+   ]
+}

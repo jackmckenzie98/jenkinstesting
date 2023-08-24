@@ -7,7 +7,7 @@
          "connectionUrl": "jdbc:hsqldb:${pf.server.data.dir}${/}hypersonic${/}ProvisionerDefaultDB;hsqldb.lock_file=false",
          "driverClass": "org.hsqldb.jdbcDriver",
          "userName": "sa",
-         "encryptedPassword": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiVEZGZmNIUndlRCIsInZlcnNpb24iOiIxMS4yLjUuMCJ9..kZPoQPtRqrnYTxGPQLqJSg.9QUipl-P5DiGJRs0-_tuug.IVttC4PVLKibIlI_NhqdKQ",
+         "encryptedPassword": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiVEZGZmNIUndlRCIsInZlcnNpb24iOiIxMS4yLjUuMCJ9..nd4xkJY07U3X8FdQsPmQwQ.1wINU5emk8yd-HKcoFHuaQ.Cgy0__YFxPaJf4EOaswemw",
          "allowMultiValueAttributes": false,
          "name": "ProvisionerDS (sa)",
          "connectionUrlTags": [
@@ -27,7 +27,7 @@
          "ldapType": "ACTIVE_DIRECTORY",
          "bindAnonymously": false,
          "userDN": "CN=Administrator,CN=Users,DC=jackmaclab,DC=local",
-         "encryptedPassword": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiVEZGZmNIUndlRCIsInZlcnNpb24iOiIxMS4yLjUuMCJ9..CmsnSre-hoxB1tMpZZTP-w.KigrMCbiJLxXYik9a2cIoQ.ZxFWP7V7ui1Bs-Ipf75Kzw",
+         "encryptedPassword": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiVEZGZmNIUndlRCIsInZlcnNpb24iOiIxMS4yLjUuMCJ9..Xkcv2xVP5OKqht1pInn4Ug.GyB7Zqtmwr_bJ0yWx7b4-g.V7sPhn3ZCqKXIrH9FZ-Tow",
          "useSsl": false,
          "useDnsSrvRecords": false,
          "followLDAPReferrals": false,

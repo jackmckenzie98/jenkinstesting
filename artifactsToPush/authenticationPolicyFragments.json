@@ -65,288 +65,6 @@
          }
       },
       {
-         "id": "rhpXyXkQHIiDsc040pyJf8fnM",
-         "name": "Intune Fragment",
-         "rootNode": {
-            "action": {
-               "type": "AUTHN_SOURCE",
-               "authenticationSource": {
-                  "type": "IDP_ADAPTER",
-                  "sourceRef": {
-                     "id": "HTMLForm",
-                     "location": "https://debian-pingfed:9999/pf-admin-api/v1/idp/adapters/HTMLForm"
-                  }
-               }
-            },
-            "children": [
-               {
-                  "action": {
-                     "type": "DONE",
-                     "context": "Fail"
-                  }
-               },
-               {
-                  "action": {
-                     "type": "AUTHN_SOURCE",
-                     "context": "Success",
-                     "authenticationSource": {
-                        "type": "IDP_ADAPTER",
-                        "sourceRef": {
-                           "id": "X509",
-                           "location": "https://debian-pingfed:9999/pf-admin-api/v1/idp/adapters/X509"
-                        }
-                     }
-                  },
-                  "children": [
-                     {
-                        "action": {
-                           "type": "DONE",
-                           "context": "Fail"
-                        }
-                     },
-                     {
-                        "action": {
-                           "type": "FRAGMENT",
-                           "context": "Success",
-                           "fragment": {
-                              "id": "qBcISD35deSnxRDMUNTHz1SFo",
-                              "location": "https://debian-pingfed:9999/pf-admin-api/v1/authenticationPolicies/fragments/qBcISD35deSnxRDMUNTHz1SFo"
-                           },
-                           "attributeRules": {
-                              "items": [
-                                 {
-                                    "attributeSource": {
-                                       "type": "FRAGMENT",
-                                       "id": "qBcISD35deSnxRDMUNTHz1SFo"
-                                    },
-                                    "attributeName": "subject",
-                                    "condition": "EQUALS_CASE_INSENSITIVE",
-                                    "expectedValue": "pass",
-                                    "result": "pass"
-                                 },
-                                 {
-                                    "attributeSource": {
-                                       "type": "FRAGMENT",
-                                       "id": "qBcISD35deSnxRDMUNTHz1SFo"
-                                    },
-                                    "attributeName": "subject",
-                                    "condition": "EQUALS_CASE_INSENSITIVE",
-                                    "expectedValue": "reject",
-                                    "result": "reject"
-                                 }
-                              ],
-                              "fallbackToSuccess": true
-                           },
-                           "fragmentMapping": {
-                              "attributeSources": [],
-                              "attributeContractFulfillment": {
-                                 "subject": {
-                                    "source": {
-                                       "type": "NO_MAPPING"
-                                    }
-                                 },
-                                 "userPrincipalName": {
-                                    "source": {
-                                       "type": "NO_MAPPING"
-                                    }
-                                 }
-                              },
-                              "issuanceCriteria": {
-                                 "conditionalCriteria": []
-                              }
-                           }
-                        },
-                        "children": [
-                           {
-                              "action": {
-                                 "type": "DONE",
-                                 "context": "Fail"
-                              }
-                           },
-                           {
-                              "action": {
-                                 "type": "FRAGMENT",
-                                 "context": "pass",
-                                 "fragment": {
-                                    "id": "dm6Ss6t890UQyzIwfOYFSOs5o",
-                                    "location": "https://debian-pingfed:9999/pf-admin-api/v1/authenticationPolicies/fragments/dm6Ss6t890UQyzIwfOYFSOs5o"
-                                 },
-                                 "fragmentMapping": {
-                                    "attributeSources": [],
-                                    "attributeContractFulfillment": {
-                                       "subject": {
-                                          "source": {
-                                             "type": "NO_MAPPING"
-                                          }
-                                       },
-                                       "userPrincipalName": {
-                                          "source": {
-                                             "type": "NO_MAPPING"
-                                          }
-                                       }
-                                    },
-                                    "issuanceCriteria": {
-                                       "conditionalCriteria": []
-                                    }
-                                 }
-                              },
-                              "children": [
-                                 {
-                                    "action": {
-                                       "type": "DONE",
-                                       "context": "Fail"
-                                    }
-                                 },
-                                 {
-                                    "action": {
-                                       "type": "APC_MAPPING",
-                                       "context": "Success",
-                                       "authenticationPolicyContractRef": {
-                                          "id": "OBVvfPs6s6jz8G4p",
-                                          "location": "https://debian-pingfed:9999/pf-admin-api/v1/authenticationPolicyContracts/OBVvfPs6s6jz8G4p"
-                                       },
-                                       "attributeMapping": {
-                                          "attributeSources": [],
-                                          "attributeContractFulfillment": {
-                                             "subject": {
-                                                "source": {
-                                                   "type": "ADAPTER",
-                                                   "id": "HTMLForm"
-                                                },
-                                                "value": "username"
-                                             },
-                                             "userPrincipalName": {
-                                                "source": {
-                                                   "type": "ADAPTER",
-                                                   "id": "X509"
-                                                },
-                                                "value": "userPrincipalName"
-                                             }
-                                          },
-                                          "issuanceCriteria": {
-                                             "conditionalCriteria": []
-                                          }
-                                       }
-                                    }
-                                 }
-                              ]
-                           },
-                           {
-                              "action": {
-                                 "type": "FRAGMENT",
-                                 "context": "reject",
-                                 "fragment": {
-                                    "id": "dm6Ss6t890UQyzIwfOYFSOs5o",
-                                    "location": "https://debian-pingfed:9999/pf-admin-api/v1/authenticationPolicies/fragments/dm6Ss6t890UQyzIwfOYFSOs5o"
-                                 },
-                                 "fragmentMapping": {
-                                    "attributeSources": [],
-                                    "attributeContractFulfillment": {
-                                       "subject": {
-                                          "source": {
-                                             "type": "NO_MAPPING"
-                                          }
-                                       },
-                                       "userPrincipalName": {
-                                          "source": {
-                                             "type": "NO_MAPPING"
-                                          }
-                                       }
-                                    },
-                                    "issuanceCriteria": {
-                                       "conditionalCriteria": []
-                                    }
-                                 }
-                              },
-                              "children": [
-                                 {
-                                    "action": {
-                                       "type": "DONE",
-                                       "context": "Fail"
-                                    }
-                                 },
-                                 {
-                                    "action": {
-                                       "type": "APC_MAPPING",
-                                       "context": "Success",
-                                       "authenticationPolicyContractRef": {
-                                          "id": "OBVvfPs6s6jz8G4p",
-                                          "location": "https://debian-pingfed:9999/pf-admin-api/v1/authenticationPolicyContracts/OBVvfPs6s6jz8G4p"
-                                       },
-                                       "attributeMapping": {
-                                          "attributeSources": [],
-                                          "attributeContractFulfillment": {
-                                             "subject": {
-                                                "source": {
-                                                   "type": "ADAPTER",
-                                                   "id": "HTMLForm"
-                                                },
-                                                "value": "username"
-                                             },
-                                             "userPrincipalName": {
-                                                "source": {
-                                                   "type": "ADAPTER",
-                                                   "id": "X509"
-                                                },
-                                                "value": "userPrincipalName"
-                                             }
-                                          },
-                                          "issuanceCriteria": {
-                                             "conditionalCriteria": []
-                                          }
-                                       }
-                                    }
-                                 }
-                              ]
-                           },
-                           {
-                              "action": {
-                                 "type": "APC_MAPPING",
-                                 "context": "Success",
-                                 "authenticationPolicyContractRef": {
-                                    "id": "OBVvfPs6s6jz8G4p",
-                                    "location": "https://debian-pingfed:9999/pf-admin-api/v1/authenticationPolicyContracts/OBVvfPs6s6jz8G4p"
-                                 },
-                                 "attributeMapping": {
-                                    "attributeSources": [],
-                                    "attributeContractFulfillment": {
-                                       "subject": {
-                                          "source": {
-                                             "type": "ADAPTER",
-                                             "id": "HTMLForm"
-                                          },
-                                          "value": "username"
-                                       },
-                                       "userPrincipalName": {
-                                          "source": {
-                                             "type": "ADAPTER",
-                                             "id": "HTMLForm"
-                                          },
-                                          "value": "username"
-                                       }
-                                    },
-                                    "issuanceCriteria": {
-                                       "conditionalCriteria": []
-                                    }
-                                 }
-                              }
-                           }
-                        ]
-                     }
-                  ]
-               }
-            ]
-         },
-         "inputs": {
-            "id": "OBVvfPs6s6jz8G4p",
-            "location": "https://debian-pingfed:9999/pf-admin-api/v1/authenticationPolicyContracts/OBVvfPs6s6jz8G4p"
-         },
-         "outputs": {
-            "id": "OBVvfPs6s6jz8G4p",
-            "location": "https://debian-pingfed:9999/pf-admin-api/v1/authenticationPolicyContracts/OBVvfPs6s6jz8G4p"
-         }
-      },
-      {
          "id": "Lg2CNXIfStVQUruvFpHZeTk65",
          "name": "testing fragment for nested rules",
          "rootNode": {
@@ -653,6 +371,288 @@
                      "type": "DONE",
                      "context": "Success"
                   }
+               }
+            ]
+         },
+         "inputs": {
+            "id": "OBVvfPs6s6jz8G4p",
+            "location": "https://debian-pingfed:9999/pf-admin-api/v1/authenticationPolicyContracts/OBVvfPs6s6jz8G4p"
+         },
+         "outputs": {
+            "id": "OBVvfPs6s6jz8G4p",
+            "location": "https://debian-pingfed:9999/pf-admin-api/v1/authenticationPolicyContracts/OBVvfPs6s6jz8G4p"
+         }
+      },
+      {
+         "id": "rhpXyXkQHIiDsc040pyJf8fnM",
+         "name": "Intune Fragment",
+         "rootNode": {
+            "action": {
+               "type": "AUTHN_SOURCE",
+               "authenticationSource": {
+                  "type": "IDP_ADAPTER",
+                  "sourceRef": {
+                     "id": "HTMLForm",
+                     "location": "https://debian-pingfed:9999/pf-admin-api/v1/idp/adapters/HTMLForm"
+                  }
+               }
+            },
+            "children": [
+               {
+                  "action": {
+                     "type": "DONE",
+                     "context": "Fail"
+                  }
+               },
+               {
+                  "action": {
+                     "type": "AUTHN_SOURCE",
+                     "context": "Success",
+                     "authenticationSource": {
+                        "type": "IDP_ADAPTER",
+                        "sourceRef": {
+                           "id": "X509",
+                           "location": "https://debian-pingfed:9999/pf-admin-api/v1/idp/adapters/X509"
+                        }
+                     }
+                  },
+                  "children": [
+                     {
+                        "action": {
+                           "type": "DONE",
+                           "context": "Fail"
+                        }
+                     },
+                     {
+                        "action": {
+                           "type": "FRAGMENT",
+                           "context": "Success",
+                           "fragment": {
+                              "id": "qBcISD35deSnxRDMUNTHz1SFo",
+                              "location": "https://debian-pingfed:9999/pf-admin-api/v1/authenticationPolicies/fragments/qBcISD35deSnxRDMUNTHz1SFo"
+                           },
+                           "attributeRules": {
+                              "items": [
+                                 {
+                                    "attributeSource": {
+                                       "type": "FRAGMENT",
+                                       "id": "qBcISD35deSnxRDMUNTHz1SFo"
+                                    },
+                                    "attributeName": "subject",
+                                    "condition": "EQUALS_CASE_INSENSITIVE",
+                                    "expectedValue": "pass",
+                                    "result": "pass"
+                                 },
+                                 {
+                                    "attributeSource": {
+                                       "type": "FRAGMENT",
+                                       "id": "qBcISD35deSnxRDMUNTHz1SFo"
+                                    },
+                                    "attributeName": "subject",
+                                    "condition": "EQUALS_CASE_INSENSITIVE",
+                                    "expectedValue": "reject",
+                                    "result": "reject"
+                                 }
+                              ],
+                              "fallbackToSuccess": true
+                           },
+                           "fragmentMapping": {
+                              "attributeSources": [],
+                              "attributeContractFulfillment": {
+                                 "subject": {
+                                    "source": {
+                                       "type": "NO_MAPPING"
+                                    }
+                                 },
+                                 "userPrincipalName": {
+                                    "source": {
+                                       "type": "NO_MAPPING"
+                                    }
+                                 }
+                              },
+                              "issuanceCriteria": {
+                                 "conditionalCriteria": []
+                              }
+                           }
+                        },
+                        "children": [
+                           {
+                              "action": {
+                                 "type": "DONE",
+                                 "context": "Fail"
+                              }
+                           },
+                           {
+                              "action": {
+                                 "type": "FRAGMENT",
+                                 "context": "pass",
+                                 "fragment": {
+                                    "id": "dm6Ss6t890UQyzIwfOYFSOs5o",
+                                    "location": "https://debian-pingfed:9999/pf-admin-api/v1/authenticationPolicies/fragments/dm6Ss6t890UQyzIwfOYFSOs5o"
+                                 },
+                                 "fragmentMapping": {
+                                    "attributeSources": [],
+                                    "attributeContractFulfillment": {
+                                       "subject": {
+                                          "source": {
+                                             "type": "NO_MAPPING"
+                                          }
+                                       },
+                                       "userPrincipalName": {
+                                          "source": {
+                                             "type": "NO_MAPPING"
+                                          }
+                                       }
+                                    },
+                                    "issuanceCriteria": {
+                                       "conditionalCriteria": []
+                                    }
+                                 }
+                              },
+                              "children": [
+                                 {
+                                    "action": {
+                                       "type": "DONE",
+                                       "context": "Fail"
+                                    }
+                                 },
+                                 {
+                                    "action": {
+                                       "type": "APC_MAPPING",
+                                       "context": "Success",
+                                       "authenticationPolicyContractRef": {
+                                          "id": "OBVvfPs6s6jz8G4p",
+                                          "location": "https://debian-pingfed:9999/pf-admin-api/v1/authenticationPolicyContracts/OBVvfPs6s6jz8G4p"
+                                       },
+                                       "attributeMapping": {
+                                          "attributeSources": [],
+                                          "attributeContractFulfillment": {
+                                             "subject": {
+                                                "source": {
+                                                   "type": "ADAPTER",
+                                                   "id": "HTMLForm"
+                                                },
+                                                "value": "username"
+                                             },
+                                             "userPrincipalName": {
+                                                "source": {
+                                                   "type": "ADAPTER",
+                                                   "id": "X509"
+                                                },
+                                                "value": "userPrincipalName"
+                                             }
+                                          },
+                                          "issuanceCriteria": {
+                                             "conditionalCriteria": []
+                                          }
+                                       }
+                                    }
+                                 }
+                              ]
+                           },
+                           {
+                              "action": {
+                                 "type": "FRAGMENT",
+                                 "context": "reject",
+                                 "fragment": {
+                                    "id": "dm6Ss6t890UQyzIwfOYFSOs5o",
+                                    "location": "https://debian-pingfed:9999/pf-admin-api/v1/authenticationPolicies/fragments/dm6Ss6t890UQyzIwfOYFSOs5o"
+                                 },
+                                 "fragmentMapping": {
+                                    "attributeSources": [],
+                                    "attributeContractFulfillment": {
+                                       "subject": {
+                                          "source": {
+                                             "type": "NO_MAPPING"
+                                          }
+                                       },
+                                       "userPrincipalName": {
+                                          "source": {
+                                             "type": "NO_MAPPING"
+                                          }
+                                       }
+                                    },
+                                    "issuanceCriteria": {
+                                       "conditionalCriteria": []
+                                    }
+                                 }
+                              },
+                              "children": [
+                                 {
+                                    "action": {
+                                       "type": "DONE",
+                                       "context": "Fail"
+                                    }
+                                 },
+                                 {
+                                    "action": {
+                                       "type": "APC_MAPPING",
+                                       "context": "Success",
+                                       "authenticationPolicyContractRef": {
+                                          "id": "OBVvfPs6s6jz8G4p",
+                                          "location": "https://debian-pingfed:9999/pf-admin-api/v1/authenticationPolicyContracts/OBVvfPs6s6jz8G4p"
+                                       },
+                                       "attributeMapping": {
+                                          "attributeSources": [],
+                                          "attributeContractFulfillment": {
+                                             "subject": {
+                                                "source": {
+                                                   "type": "ADAPTER",
+                                                   "id": "HTMLForm"
+                                                },
+                                                "value": "username"
+                                             },
+                                             "userPrincipalName": {
+                                                "source": {
+                                                   "type": "ADAPTER",
+                                                   "id": "X509"
+                                                },
+                                                "value": "userPrincipalName"
+                                             }
+                                          },
+                                          "issuanceCriteria": {
+                                             "conditionalCriteria": []
+                                          }
+                                       }
+                                    }
+                                 }
+                              ]
+                           },
+                           {
+                              "action": {
+                                 "type": "APC_MAPPING",
+                                 "context": "Success",
+                                 "authenticationPolicyContractRef": {
+                                    "id": "OBVvfPs6s6jz8G4p",
+                                    "location": "https://debian-pingfed:9999/pf-admin-api/v1/authenticationPolicyContracts/OBVvfPs6s6jz8G4p"
+                                 },
+                                 "attributeMapping": {
+                                    "attributeSources": [],
+                                    "attributeContractFulfillment": {
+                                       "subject": {
+                                          "source": {
+                                             "type": "ADAPTER",
+                                             "id": "HTMLForm"
+                                          },
+                                          "value": "username"
+                                       },
+                                       "userPrincipalName": {
+                                          "source": {
+                                             "type": "ADAPTER",
+                                             "id": "HTMLForm"
+                                          },
+                                          "value": "username"
+                                       }
+                                    },
+                                    "issuanceCriteria": {
+                                       "conditionalCriteria": []
+                                    }
+                                 }
+                              }
+                           }
+                        ]
+                     }
+                  ]
                }
             ]
          },

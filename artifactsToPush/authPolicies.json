@@ -349,5 +349,7 @@
          }
       }
    ],
-   "trackedHttpParameters": []
+   "trackedHttpParameters": [
+      "hello.attribute"
+   ]
 }

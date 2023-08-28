@@ -473,7 +473,7 @@
                },
                {
                   "name": "Application Secret",
-                  "encryptedValue": "OBF:JWE:eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiVEZGZmNIUndlRCIsInZlcnNpb24iOiIxMS4yLjUuMCJ9..EZ402YrJFASOCk-5hH3L-Q.iQdDUaN7baRdvLO45d8risKdvC-dUA9gnssYDuUZAkz8B1J0S6HdXQfG629GxqmY.rHXdsohQWSxh9-v4ZU6UdQ"
+                  "encryptedValue": "OBF:JWE:eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiVEZGZmNIUndlRCIsInZlcnNpb24iOiIxMS4yLjUuMCJ9..-9reJemWg3d8T8sWyC_c8g.wbkjXbSxlbt9l4Z5d30XFhfzOVFH1bi63qC2Mb3vet9C1irV9fJ7iyWu62Nt3d99.4K8tOp08N-ewfK6L11EBeg"
                },
                {
                   "name": "Device lookup attribute",

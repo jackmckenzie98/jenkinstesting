@@ -28,8 +28,8 @@
          "spBrowserSso": {
             "protocol": "SAML20",
             "enabledProfiles": [
-               "SP_INITIATED_SSO",
-               "IDP_INITIATED_SSO"
+               "IDP_INITIATED_SSO",
+               "SP_INITIATED_SSO"
             ],
             "incomingBindings": [
                "POST",
@@ -120,8 +120,8 @@
          "spBrowserSso": {
             "protocol": "SAML20",
             "enabledProfiles": [
-               "SP_INITIATED_SSO",
-               "IDP_INITIATED_SSO"
+               "IDP_INITIATED_SSO",
+               "SP_INITIATED_SSO"
             ],
             "incomingBindings": [
                "POST",

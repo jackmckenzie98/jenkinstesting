@@ -2,99 +2,6 @@
    "items": [
       {
          "type": "SP",
-         "id": "lcdo5uqYns0T0syy.qg9GooCsVB",
-         "name": "IAMShowcase",
-         "entityId": "IAMShowcase",
-         "active": true,
-         "contactInfo": {},
-         "baseUrl": "https://sptest.iamshowcase.com",
-         "loggingMode": "FULL",
-         "virtualEntityIds": [],
-         "licenseConnectionGroup": "",
-         "credentials": {
-            "certs": [],
-            "signingSettings": {
-               "signingKeyPairRef": {
-                  "id": "vn561yy2nrgg6xf6nvt4i2dxb",
-                  "location": "https://debian-pingfed:9999/pf-admin-api/v1/keyPairs/signing/vn561yy2nrgg6xf6nvt4i2dxb"
-               },
-               "algorithm": "SHA256withRSA",
-               "includeCertInSignature": false,
-               "includeRawKeyInSignature": false
-            }
-         },
-         "modificationDate": "2023-06-16T20:46:04.144Z",
-         "creationDate": "2023-06-08T22:25:52.106Z",
-         "spBrowserSso": {
-            "protocol": "SAML20",
-            "enabledProfiles": [
-               "IDP_INITIATED_SSO",
-               "SP_INITIATED_SSO"
-            ],
-            "incomingBindings": [
-               "POST",
-               "REDIRECT"
-            ],
-            "ssoServiceEndpoints": [
-               {
-                  "binding": "POST",
-                  "url": "/acs",
-                  "isDefault": true,
-                  "index": 0
-               }
-            ],
-            "signAssertions": true,
-            "signResponseAsRequired": true,
-            "spSamlIdentityMapping": "STANDARD",
-            "requireSignedAuthnRequests": false,
-            "assertionLifetime": {
-               "minutesBefore": 5,
-               "minutesAfter": 5
-            },
-            "encryptionPolicy": {
-               "encryptAssertion": false,
-               "encryptSloSubjectNameId": false,
-               "sloSubjectNameIDEncrypted": false,
-               "encryptedAttributes": []
-            },
-            "attributeContract": {
-               "coreAttributes": [
-                  {
-                     "name": "SAML_SUBJECT",
-                     "nameFormat": "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified"
-                  }
-               ],
-               "extendedAttributes": []
-            },
-            "adapterMappings": [
-               {
-                  "attributeSources": [],
-                  "attributeContractFulfillment": {
-                     "SAML_SUBJECT": {
-                        "source": {
-                           "type": "ADAPTER"
-                        },
-                        "value": "userPrincipalName"
-                     }
-                  },
-                  "issuanceCriteria": {
-                     "conditionalCriteria": []
-                  },
-                  "restrictVirtualEntityIds": false,
-                  "restrictedVirtualEntityIds": [],
-                  "idpAdapterRef": {
-                     "id": "X509",
-                     "location": "https://debian-pingfed:9999/pf-admin-api/v1/idp/adapters/X509"
-                  },
-                  "abortSsoTransactionAsFailSafe": false
-               }
-            ],
-            "authenticationPolicyContractAssertionMappings": []
-         },
-         "connectionTargetType": "STANDARD"
-      },
-      {
-         "type": "SP",
          "id": "aQs5NJwyTFiCZr9LQ0OjQrThzgJ",
          "name": "Okta",
          "entityId": "https://www.okta.com/saml2/service-provider/spwiljpovidvpbloixgh",
@@ -120,8 +27,8 @@
          "spBrowserSso": {
             "protocol": "SAML20",
             "enabledProfiles": [
-               "IDP_INITIATED_SSO",
-               "SP_INITIATED_SSO"
+               "SP_INITIATED_SSO",
+               "IDP_INITIATED_SSO"
             ],
             "incomingBindings": [
                "POST",
@@ -213,6 +120,99 @@
                   "abortSsoTransactionAsFailSafe": false
                }
             ]
+         },
+         "connectionTargetType": "STANDARD"
+      },
+      {
+         "type": "SP",
+         "id": "lcdo5uqYns0T0syy.qg9GooCsVB",
+         "name": "IAMShowcase",
+         "entityId": "IAMShowcase",
+         "active": true,
+         "contactInfo": {},
+         "baseUrl": "https://sptest.iamshowcase.com",
+         "loggingMode": "FULL",
+         "virtualEntityIds": [],
+         "licenseConnectionGroup": "",
+         "credentials": {
+            "certs": [],
+            "signingSettings": {
+               "signingKeyPairRef": {
+                  "id": "vn561yy2nrgg6xf6nvt4i2dxb",
+                  "location": "https://debian-pingfed:9999/pf-admin-api/v1/keyPairs/signing/vn561yy2nrgg6xf6nvt4i2dxb"
+               },
+               "algorithm": "SHA256withRSA",
+               "includeCertInSignature": false,
+               "includeRawKeyInSignature": false
+            }
+         },
+         "modificationDate": "2023-06-16T20:46:04.144Z",
+         "creationDate": "2023-06-08T22:25:52.106Z",
+         "spBrowserSso": {
+            "protocol": "SAML20",
+            "enabledProfiles": [
+               "SP_INITIATED_SSO",
+               "IDP_INITIATED_SSO"
+            ],
+            "incomingBindings": [
+               "POST",
+               "REDIRECT"
+            ],
+            "ssoServiceEndpoints": [
+               {
+                  "binding": "POST",
+                  "url": "/acs",
+                  "isDefault": true,
+                  "index": 0
+               }
+            ],
+            "signAssertions": true,
+            "signResponseAsRequired": true,
+            "spSamlIdentityMapping": "STANDARD",
+            "requireSignedAuthnRequests": false,
+            "assertionLifetime": {
+               "minutesBefore": 5,
+               "minutesAfter": 5
+            },
+            "encryptionPolicy": {
+               "encryptAssertion": false,
+               "encryptSloSubjectNameId": false,
+               "sloSubjectNameIDEncrypted": false,
+               "encryptedAttributes": []
+            },
+            "attributeContract": {
+               "coreAttributes": [
+                  {
+                     "name": "SAML_SUBJECT",
+                     "nameFormat": "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified"
+                  }
+               ],
+               "extendedAttributes": []
+            },
+            "adapterMappings": [
+               {
+                  "attributeSources": [],
+                  "attributeContractFulfillment": {
+                     "SAML_SUBJECT": {
+                        "source": {
+                           "type": "ADAPTER"
+                        },
+                        "value": "userPrincipalName"
+                     }
+                  },
+                  "issuanceCriteria": {
+                     "conditionalCriteria": []
+                  },
+                  "restrictVirtualEntityIds": false,
+                  "restrictedVirtualEntityIds": [],
+                  "idpAdapterRef": {
+                     "id": "X509",
+                     "location": "https://debian-pingfed:9999/pf-admin-api/v1/idp/adapters/X509"
+                  },
+                  "abortSsoTransactionAsFailSafe": false
+               }
+            ],
+            "authenticationPolicyContractAssertionMappings": []
          },
          "connectionTargetType": "STANDARD"
       }

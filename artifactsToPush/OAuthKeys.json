@@ -1,0 +1,17 @@
+{
+   "items": [
+      {
+         "staticJwksEnabled": true,
+         "rsaActiveCertRef": {
+            "id": "vn561yy2nrgg6xf6nvt4i2dxb",
+            "location": "https://debian-pingfed:9999/pf-admin-api/v1/keyPairs/signing/vn561yy2nrgg6xf6nvt4i2dxb"
+         },
+         "rsaPublishX5cParameter": false,
+         "rsaDecryptionActiveCertRef": {
+            "id": "vn561yy2nrgg6xf6nvt4i2dxb",
+            "location": "https://debian-pingfed:9999/pf-admin-api/v1/keyPairs/signing/vn561yy2nrgg6xf6nvt4i2dxb"
+         },
+         "rsaDecryptionPublishX5cParameter": false
+      }
+   ]
+}

@@ -1,8 +1,8 @@
 {
    "items": [
       {
-         "id": "OBVvfPs6s6jz8G4p",
-         "name": "Contract",
+         "id": "eYVb1JTd784oOLnt",
+         "name": "cspFragmentInPolicyContract",
          "coreAttributes": [
             {
                "name": "subject"
@@ -10,7 +10,495 @@
          ],
          "extendedAttributes": [
             {
-               "name": "userPrincipalName"
+               "name": "csp"
+            },
+            {
+               "name": "signinSignup"
+            },
+            {
+               "name": "language"
+            },
+            {
+               "name": "sessionId"
+            },
+            {
+               "name": "authn_level"
+            }
+         ]
+      },
+      {
+         "id": "jZH5UkqEmym8n9lT",
+         "name": "IAL1",
+         "coreAttributes": [
+            {
+               "name": "subject"
+            }
+         ],
+         "extendedAttributes": [
+            {
+               "name": "csp"
+            },
+            {
+               "name": "authlevel"
+            },
+            {
+               "name": "email"
+            }
+         ]
+      },
+      {
+         "id": "hpdoQBvOJc7yp6WA",
+         "name": "correlationIdOutput",
+         "coreAttributes": [
+            {
+               "name": "subject"
+            }
+         ],
+         "extendedAttributes": [
+            {
+               "name": "correlationId"
+            }
+         ]
+      },
+      {
+         "id": "hIF1Nyb2BCgzGoYa",
+         "name": "cspPolicyContract",
+         "coreAttributes": [
+            {
+               "name": "subject"
+            }
+         ],
+         "extendedAttributes": [
+            {
+               "name": "zip"
+            },
+            {
+               "name": "csp"
+            },
+            {
+               "name": "dateofBirth"
+            },
+            {
+               "name": "address"
+            },
+            {
+               "name": "irsShortID"
+            },
+            {
+               "name": "surName"
+            },
+            {
+               "name": "city"
+            },
+            {
+               "name": "givenName"
+            },
+            {
+               "name": "middlename"
+            },
+            {
+               "name": "tid"
+            },
+            {
+               "name": "phone"
+            },
+            {
+               "name": "irsUUID"
+            },
+            {
+               "name": "tin"
+            },
+            {
+               "name": "state"
+            },
+            {
+               "name": "email"
+            },
+            {
+               "name": "username"
+            }
+         ]
+      },
+      {
+         "id": "z4MKaRh2MQU1WyaQ",
+         "name": "correlationIdInput",
+         "coreAttributes": [
+            {
+               "name": "subject"
+            }
+         ],
+         "extendedAttributes": []
+      },
+      {
+         "id": "qL7kjki8ZS5pUDOC",
+         "name": "FailcasePolicyContract",
+         "coreAttributes": [
+            {
+               "name": "subject"
+            }
+         ],
+         "extendedAttributes": [
+            {
+               "name": "csp"
+            }
+         ]
+      },
+      {
+         "id": "kbY5MhkPYdCGTzLU",
+         "name": "loggerInput",
+         "coreAttributes": [
+            {
+               "name": "subject"
+            }
+         ],
+         "extendedAttributes": [
+            {
+               "name": "csp"
+            },
+            {
+               "name": "clientIp"
+            },
+            {
+               "name": "timestamp"
+            }
+         ]
+      },
+      {
+         "id": "Auv9XRgBXkHqv1T7",
+         "name": " CustomLoggerInputContract",
+         "coreAttributes": [
+            {
+               "name": "subject"
+            }
+         ],
+         "extendedAttributes": [
+            {
+               "name": "sub"
+            },
+            {
+               "name": "dateofBirth"
+            },
+            {
+               "name": "surName"
+            },
+            {
+               "name": "city"
+            },
+            {
+               "name": "auth_level"
+            },
+            {
+               "name": "iss"
+            },
+            {
+               "name": "CSPProviderName"
+            },
+            {
+               "name": "errorCode"
+            },
+            {
+               "name": "Device Identifier"
+            },
+            {
+               "name": "sessionID"
+            },
+            {
+               "name": "TaxPeriod"
+            },
+            {
+               "name": "tin"
+            },
+            {
+               "name": "MFTCode"
+            },
+            {
+               "name": "exp"
+            },
+            {
+               "name": "iat"
+            },
+            {
+               "name": "email"
+            },
+            {
+               "name": "zip"
+            },
+            {
+               "name": "eventId"
+            },
+            {
+               "name": "address"
+            },
+            {
+               "name": "givenName"
+            },
+            {
+               "name": "ReturnType"
+            },
+            {
+               "name": "TaxFilerTINType"
+            },
+            {
+               "name": "errorMsg"
+            },
+            {
+               "name": "target"
+            },
+            {
+               "name": "aud"
+            },
+            {
+               "name": "phone"
+            },
+            {
+               "name": "eventStatus"
+            },
+            {
+               "name": "Application Data"
+            },
+            {
+               "name": "auditStatus"
+            }
+         ]
+      },
+      {
+         "id": "0cnPaYhuoGmWLHKw",
+         "name": "getAppIdInputContract",
+         "coreAttributes": [
+            {
+               "name": "subject"
+            }
+         ],
+         "extendedAttributes": []
+      },
+      {
+         "id": "a6BDuqIgfCVs6sXp",
+         "name": "CustomLoggerOutputContract",
+         "coreAttributes": [
+            {
+               "name": "subject"
+            }
+         ],
+         "extendedAttributes": []
+      },
+      {
+         "id": "TyQuCXxwzoKEmZe3",
+         "name": "IAL2",
+         "coreAttributes": [
+            {
+               "name": "subject"
+            }
+         ],
+         "extendedAttributes": [
+            {
+               "name": "dateofbirth"
+            },
+            {
+               "name": "csp"
+            },
+            {
+               "name": "phone"
+            },
+            {
+               "name": "tin"
+            },
+            {
+               "name": "authlevel"
+            },
+            {
+               "name": "id"
+            },
+            {
+               "name": "email"
+            },
+            {
+               "name": "lastname"
+            }
+         ]
+      },
+      {
+         "id": "d7gn3kBm2jXv93n4",
+         "name": "getAppIdOutputContract",
+         "coreAttributes": [
+            {
+               "name": "subject"
+            }
+         ],
+         "extendedAttributes": [
+            {
+               "name": "appId"
+            }
+         ]
+      },
+      {
+         "id": "iD90FZjdE7m5KCu9",
+         "name": "errorFragmentInput",
+         "coreAttributes": [
+            {
+               "name": "subject"
+            }
+         ],
+         "extendedAttributes": [
+            {
+               "name": "errorCode"
+            },
+            {
+               "name": "tid"
+            }
+         ]
+      },
+      {
+         "id": "5eMsRdNtrqdLSA85",
+         "name": "cfamLoggerInputContract",
+         "coreAttributes": [
+            {
+               "name": "subject"
+            }
+         ],
+         "extendedAttributes": [
+            {
+               "name": "sessionID"
+            }
+         ]
+      },
+      {
+         "id": "ujYJsBaaAEmy4hDb",
+         "name": "loggerOutput",
+         "coreAttributes": [
+            {
+               "name": "subject"
+            }
+         ],
+         "extendedAttributes": []
+      },
+      {
+         "id": "t4QqOdzlnthM9C4X",
+         "name": "jwtInput",
+         "coreAttributes": [
+            {
+               "name": "subject"
+            }
+         ],
+         "extendedAttributes": [
+            {
+               "name": "zip"
+            },
+            {
+               "name": "dateofbirth"
+            },
+            {
+               "name": "firstname"
+            },
+            {
+               "name": "address"
+            },
+            {
+               "name": "allattributeshash"
+            },
+            {
+               "name": "city"
+            },
+            {
+               "name": "iss"
+            },
+            {
+               "name": "createdate"
+            },
+            {
+               "name": "middlename"
+            },
+            {
+               "name": "lastname"
+            },
+            {
+               "name": "aud"
+            },
+            {
+               "name": "phone"
+            },
+            {
+               "name": "authlevel"
+            },
+            {
+               "name": "tin"
+            },
+            {
+               "name": "id"
+            },
+            {
+               "name": "state"
+            },
+            {
+               "name": "exp"
+            },
+            {
+               "name": "iat"
+            },
+            {
+               "name": "cspName"
+            },
+            {
+               "name": "email"
+            }
+         ]
+      },
+      {
+         "id": "xacP9sdxwf2LSVMl",
+         "name": "cfamLoggerOutputContract",
+         "coreAttributes": [
+            {
+               "name": "subject"
+            }
+         ],
+         "extendedAttributes": []
+      },
+      {
+         "id": "wwU9IMvQ17Si37x3",
+         "name": "jwtOutput",
+         "coreAttributes": [
+            {
+               "name": "subject"
+            }
+         ],
+         "extendedAttributes": [
+            {
+               "name": "processJwt"
+            },
+            {
+               "name": "irsShortID"
+            },
+            {
+               "name": "irsUUID"
+            },
+            {
+               "name": "httpResponseCode"
+            },
+            {
+               "name": "status"
+            }
+         ]
+      },
+      {
+         "id": "HiWnhhpr3g6rJrQO",
+         "name": "cspLoopback",
+         "coreAttributes": [
+            {
+               "name": "subject"
+            }
+         ],
+         "extendedAttributes": []
+      },
+      {
+         "id": "IdpConnectionPolicyContractID",
+         "name": "IDPConnectionPolicyContract",
+         "coreAttributes": [
+            {
+               "name": "subject"
+            }
+         ],
+         "extendedAttributes": [
+            {
+               "name": "mail"
             }
          ]
       }

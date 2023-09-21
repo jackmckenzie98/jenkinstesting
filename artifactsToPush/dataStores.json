@@ -7,7 +7,7 @@
          "connectionUrl": "jdbc:hsqldb:${pf.server.data.dir}${/}hypersonic${/}ProvisionerDefaultDB;hsqldb.lock_file=false",
          "driverClass": "org.hsqldb.jdbcDriver",
          "userName": "sa",
-         "encryptedPassword": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiVEZGZmNIUndlRCIsInZlcnNpb24iOiIxMS4yLjUuMCJ9..nhaS7_5GKaiEYvv8-Yehjg.bo5edMpa1rVvBq_EwkQ2VQ.8XHb-985xJqgozDraVuW9Q",
+         "encryptedPassword": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiVWU5YmpCVDdhZyIsInZlcnNpb24iOiIxMS4yLjQuMCJ9..yblhZz24GTyZpdp_gpQj6A.BOqWmc8Nv2yaVEakVVodpQ.t3B2Eire_wnK6hkmH9DR0g",
          "allowMultiValueAttributes": false,
          "name": "ProvisionerDS (sa)",
          "connectionUrlTags": [
@@ -19,24 +19,24 @@
       },
       {
          "type": "LDAP",
-         "id": "LDAP-9C0F7B8140022366337FA96754B231F734D25CA2",
+         "id": "LDAP-ED7450E364A81A21E2BC5061343B9851C7BCB385",
          "maskAttributeValues": false,
          "hostnames": [
-            "JackMacLocal-DC"
+            "10.101.11.241:1636"
          ],
-         "ldapType": "ACTIVE_DIRECTORY",
+         "ldapType": "PING_DIRECTORY",
          "bindAnonymously": false,
-         "userDN": "CN=Administrator,CN=Users,DC=jackmaclab,DC=local",
-         "encryptedPassword": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiVEZGZmNIUndlRCIsInZlcnNpb24iOiIxMS4yLjUuMCJ9..MBkKsVZyXCAZdNJ09HRAoQ.QP5-T1sMzHoyUpSLjxASYA.y8vSDub1GntUuKhMZJzirA",
-         "useSsl": false,
+         "userDN": "uid=adminsvc,ou=applications,ou=applicationServices,dc=cobalt,dc=ping-eng,dc=com",
+         "encryptedPassword": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiVWU5YmpCVDdhZyIsInZlcnNpb24iOiIxMS4yLjQuMCJ9..uZiGZATa-z7ohonXT5qT0w.mhAgERnVtXGyQsYKXSsXFw.QDZFzVNqLItmRTYmwloHLA",
+         "useSsl": true,
          "useDnsSrvRecords": false,
-         "followLDAPReferrals": false,
-         "name": "Test Data Store",
+         "name": "Cobalt PD",
          "hostnamesTags": [
             {
                "hostnames": [
-                  "JackMacLocal-DC"
+                  "10.101.11.241:1636"
                ],
+               "tags": "Cobalt PD",
                "defaultSource": true
             }
          ],
@@ -54,6 +54,177 @@
          "dnsTtl": 60000,
          "ldapDnsSrvPrefix": "_ldap._tcp",
          "ldapsDnsSrvPrefix": "_ldaps._tcp"
+      },
+      {
+         "type": "CUSTOM",
+         "id": "Other-AD9E00564483B5C1D7A3F97740622365BDA661E0",
+         "name": "Audit",
+         "pluginDescriptorRef": {
+            "id": "com.pingidentity.pf.datastore.other.RestDataSourceDriver",
+            "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/dataStores/descriptors/com.pingidentity.pf.datastore.other.RestDataSourceDriver"
+         },
+         "configuration": {
+            "tables": [
+               {
+                  "name": "Base URLs and Tags",
+                  "rows": [
+                     {
+                        "fields": [
+                           {
+                              "name": "Base URL",
+                              "value": "http://localhost:55001"
+                           },
+                           {
+                              "name": "Tags",
+                              "value": ""
+                           }
+                        ],
+                        "defaultRow": true
+                     }
+                  ]
+               },
+               {
+                  "name": "HTTP Request Headers",
+                  "rows": []
+               },
+               {
+                  "name": "Attributes",
+                  "rows": [
+                     {
+                        "fields": [
+                           {
+                              "name": "Local Attribute",
+                              "value": "name"
+                           },
+                           {
+                              "name": "JSON Response Attribute Path",
+                              "value": "/name"
+                           }
+                        ],
+                        "defaultRow": false
+                     },
+                     {
+                        "fields": [
+                           {
+                              "name": "Local Attribute",
+                              "value": "csp"
+                           },
+                           {
+                              "name": "JSON Response Attribute Path",
+                              "value": "/csp"
+                           }
+                        ],
+                        "defaultRow": false
+                     },
+                     {
+                        "fields": [
+                           {
+                              "name": "Local Attribute",
+                              "value": "timestamp"
+                           },
+                           {
+                              "name": "JSON Response Attribute Path",
+                              "value": "/timestamp"
+                           }
+                        ],
+                        "defaultRow": false
+                     },
+                     {
+                        "fields": [
+                           {
+                              "name": "Local Attribute",
+                              "value": "event"
+                           },
+                           {
+                              "name": "JSON Response Attribute Path",
+                              "value": "/event"
+                           }
+                        ],
+                        "defaultRow": false
+                     }
+                  ]
+               }
+            ],
+            "fields": [
+               {
+                  "name": "Authentication Method",
+                  "value": "Basic Authentication"
+               },
+               {
+                  "name": "HTTP Method",
+                  "value": "POST"
+               },
+               {
+                  "name": "Username",
+                  "value": "audit"
+               },
+               {
+                  "name": "Password",
+                  "encryptedValue": "OBF:JWE:eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiVWU5YmpCVDdhZyIsInZlcnNpb24iOiIxMS4yLjQuMCJ9..cArqw8bWCJ9NCqPpZovmSQ.yE5mDBHM9_tuPC3EluOaPQ.rDhvtYlDGrOEJUc_2IGxSA"
+               },
+               {
+                  "name": "Password Reference",
+                  "value": ""
+               },
+               {
+                  "name": "OAuth Token Endpoint",
+                  "value": ""
+               },
+               {
+                  "name": "OAuth Scope",
+                  "value": ""
+               },
+               {
+                  "name": "Client ID",
+                  "value": ""
+               },
+               {
+                  "name": "Client Secret",
+                  "value": ""
+               },
+               {
+                  "name": "Client Secret Reference",
+                  "value": ""
+               },
+               {
+                  "name": "Enable HTTPS Hostname Verification",
+                  "value": "true"
+               },
+               {
+                  "name": "Read Timeout (ms)",
+                  "value": "10000"
+               },
+               {
+                  "name": "Connection Timeout (ms)",
+                  "value": "10000"
+               },
+               {
+                  "name": "Max Payload Size (KB)",
+                  "value": "1024"
+               },
+               {
+                  "name": "Retry Request",
+                  "value": "true"
+               },
+               {
+                  "name": "Maximum Retries Limit",
+                  "value": "5"
+               },
+               {
+                  "name": "Retry Error Codes",
+                  "value": "429"
+               },
+               {
+                  "name": "Test Connection URL",
+                  "value": ""
+               },
+               {
+                  "name": "Test Connection Body",
+                  "value": "{\"name\": \"testuser\", \"csp\": \"NOCSP\", \"timestamp\": \"notime\" }"
+               }
+            ]
+         },
+         "maskAttributeValues": false
       }
    ]
 }

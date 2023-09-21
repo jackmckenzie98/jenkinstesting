@@ -1,12 +1,172 @@
 {
    "items": [
       {
-         "id": "K0Ckzra2RFYk7mtctcHt3Jaau",
+         "id": "kJnNm4KFEza27uOtAcT0ZyVi8",
+         "authenticationSource": {
+            "type": "IDP_CONNECTION",
+            "sourceRef": {
+               "id": "EyNghjBK-8Gbco.9ke9HFjIe63j",
+               "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/sp/idpConnections/EyNghjBK-8Gbco.9ke9HFjIe63j"
+            }
+         },
+         "enableSessions": true,
+         "persistent": false,
+         "idleTimeoutMins": 15,
+         "maxTimeoutMins": 60,
+         "timeoutDisplayUnit": "MINUTES",
+         "authnContextSensitive": false
+      },
+      {
+         "id": "iBNcx2sC9iDP3i8rljmXoVDzd",
+         "authenticationSource": {
+            "type": "IDP_CONNECTION",
+            "sourceRef": {
+               "id": "kO2MJsAKcOVWVapGZnte0uxsHiN",
+               "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/sp/idpConnections/kO2MJsAKcOVWVapGZnte0uxsHiN"
+            }
+         },
+         "enableSessions": true,
+         "persistent": false,
+         "idleTimeoutMins": 15,
+         "maxTimeoutMins": 60,
+         "timeoutDisplayUnit": "MINUTES",
+         "authnContextSensitive": false
+      },
+      {
+         "id": "If905MrFhy8f1SMqvmlAUeiiP",
+         "authenticationSource": {
+            "type": "IDP_CONNECTION",
+            "sourceRef": {
+               "id": "klhnnfJ2mZzduirI4M.-B3nl6-y",
+               "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/sp/idpConnections/klhnnfJ2mZzduirI4M.-B3nl6-y"
+            }
+         },
+         "enableSessions": true,
+         "persistent": false,
+         "idleTimeoutMins": 2,
+         "maxTimeoutMins": 60,
+         "timeoutDisplayUnit": "MINUTES",
+         "authnContextSensitive": false
+      },
+      {
+         "id": "fRRSChiU33vdLuzsBG626sOdp",
+         "authenticationSource": {
+            "type": "IDP_CONNECTION",
+            "sourceRef": {
+               "id": "ruIksiPFCsM-e6vDPM9QdpZBNAh",
+               "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/sp/idpConnections/ruIksiPFCsM-e6vDPM9QdpZBNAh"
+            }
+         },
+         "enableSessions": true,
+         "persistent": false,
+         "idleTimeoutMins": 15,
+         "maxTimeoutMins": 60,
+         "timeoutDisplayUnit": "MINUTES",
+         "authnContextSensitive": false
+      },
+      {
+         "id": "7vGxYnJii2u6vqGmEg8Nq0ltL",
          "authenticationSource": {
             "type": "IDP_ADAPTER",
             "sourceRef": {
-               "id": "HTMLForm",
-               "location": "https://debian-pingfed:9999/pf-admin-api/v1/idp/adapters/HTMLForm"
+               "id": "CSPRedirectIAL1RefID",
+               "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/idp/adapters/CSPRedirectIAL1RefID"
+            }
+         },
+         "enableSessions": true,
+         "persistent": false,
+         "idleTimeoutMins": 2,
+         "maxTimeoutMins": 60,
+         "timeoutDisplayUnit": "MINUTES",
+         "authnContextSensitive": false
+      },
+      {
+         "id": "7AgvgDpCG1nek0USLI76iWnhB",
+         "authenticationSource": {
+            "type": "IDP_ADAPTER",
+            "sourceRef": {
+               "id": "CSPRedirectIAL2RefID",
+               "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/idp/adapters/CSPRedirectIAL2RefID"
+            }
+         },
+         "enableSessions": true,
+         "persistent": false,
+         "idleTimeoutMins": 15,
+         "maxTimeoutMins": 60,
+         "timeoutDisplayUnit": "MINUTES",
+         "authnContextSensitive": false
+      },
+      {
+         "id": "KrvCjta6ftI8OU58ueTdSiICG",
+         "authenticationSource": {
+            "type": "IDP_CONNECTION",
+            "sourceRef": {
+               "id": "zAZTLLwBq4KHl6numZRylqlnfR8",
+               "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/sp/idpConnections/zAZTLLwBq4KHl6numZRylqlnfR8"
+            }
+         },
+         "enableSessions": true,
+         "persistent": false,
+         "idleTimeoutMins": 15,
+         "maxTimeoutMins": 60,
+         "timeoutDisplayUnit": "MINUTES",
+         "authnContextSensitive": false
+      },
+      {
+         "id": "iVio9APux3teTJE3RnRWRW08W",
+         "authenticationSource": {
+            "type": "IDP_CONNECTION",
+            "sourceRef": {
+               "id": "YXFKwu1PUIzhGymXkQ-NqgCLKV7",
+               "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/sp/idpConnections/YXFKwu1PUIzhGymXkQ-NqgCLKV7"
+            }
+         },
+         "enableSessions": true,
+         "persistent": false,
+         "idleTimeoutMins": 15,
+         "maxTimeoutMins": 60,
+         "timeoutDisplayUnit": "MINUTES",
+         "authnContextSensitive": false
+      },
+      {
+         "id": "aXhcC5MJEg3FVLH9RWbpHBWep",
+         "authenticationSource": {
+            "type": "IDP_CONNECTION",
+            "sourceRef": {
+               "id": "LwX8uOFvONpyU2-VkNlhIKOOdnY",
+               "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/sp/idpConnections/LwX8uOFvONpyU2-VkNlhIKOOdnY"
+            }
+         },
+         "enableSessions": true,
+         "persistent": false,
+         "idleTimeoutMins": 15,
+         "maxTimeoutMins": 60,
+         "timeoutDisplayUnit": "MINUTES",
+         "authnContextSensitive": false
+      },
+      {
+         "id": "cvMM2gi8MYUnSRvRQNVD6gt5m",
+         "authenticationSource": {
+            "type": "IDP_CONNECTION",
+            "sourceRef": {
+               "id": "J4xD5JRD5b295zxGRAWDOc8FJDC",
+               "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/sp/idpConnections/J4xD5JRD5b295zxGRAWDOc8FJDC"
+            }
+         },
+         "enableSessions": true,
+         "persistent": false,
+         "idleTimeoutMins": 15,
+         "maxTimeoutMins": 60,
+         "timeoutDisplayUnit": "MINUTES",
+         "authnContextSensitive": false
+      },
+      {
+         "id": "YTGc1YpAGxKOhDd7e5rYbvjTF",
+         "authenticationSource": {
+            "type": "IDP_ADAPTER",
+            "sourceRef": {
+               "id": "SimpleHTML",
+               "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/idp/adapters/SimpleHTML"
             }
          },
          "enableSessions": true,

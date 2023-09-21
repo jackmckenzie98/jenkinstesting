@@ -2,7 +2,9 @@
    "items": [
       {
          "virtualHostNames": [
-            "hello.yeah"
+            "int-avanti.cobalt.ping-eng.com",
+            "ext-avanti.cobalt.ping-eng.com",
+            "login.retina.ping-eng.com"
          ]
       }
    ]

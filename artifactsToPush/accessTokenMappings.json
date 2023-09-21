@@ -1,41 +1,161 @@
 {
    "items": [
       {
-         "attributeSources": [
-            {
-               "type": "JDBC",
-               "dataStoreRef": {
-                  "id": "ProvisionerDS",
-                  "location": "https://debian-pingfed:9999/pf-admin-api/v1/dataStores/ProvisionerDS"
-               },
-               "id": "PCV",
-               "description": "PCV",
-               "schema": "INFORMATION_SCHEMA",
-               "table": "ADMINISTRABLE_ROLE_AUTHORIZATIONS",
-               "filter": "${USER_KEY}",
-               "columnNames": [
-                  "GRANTEE"
-               ]
-            }
-         ],
+         "attributeSources": [],
          "attributeContractFulfillment": {
-            "attribute": {
+            "zip": {
+               "source": {
+                  "type": "AUTHENTICATION_POLICY_CONTRACT"
+               },
+               "value": "zip"
+            },
+            "csp": {
+               "source": {
+                  "type": "AUTHENTICATION_POLICY_CONTRACT"
+               },
+               "value": "csp"
+            },
+            "dateofBirth": {
+               "source": {
+                  "type": "AUTHENTICATION_POLICY_CONTRACT"
+               },
+               "value": "dateofBirth"
+            },
+            "address": {
+               "source": {
+                  "type": "AUTHENTICATION_POLICY_CONTRACT"
+               },
+               "value": "address"
+            },
+            "irsShortID": {
+               "source": {
+                  "type": "AUTHENTICATION_POLICY_CONTRACT"
+               },
+               "value": "irsShortID"
+            },
+            "newTrackingID": {
+               "source": {
+                  "type": "NO_MAPPING"
+               }
+            },
+            "surName": {
+               "source": {
+                  "type": "AUTHENTICATION_POLICY_CONTRACT"
+               },
+               "value": "surName"
+            },
+            "city": {
+               "source": {
+                  "type": "AUTHENTICATION_POLICY_CONTRACT"
+               },
+               "value": "city"
+            },
+            "givenName": {
+               "source": {
+                  "type": "AUTHENTICATION_POLICY_CONTRACT"
+               },
+               "value": "givenName"
+            },
+            "middlename": {
+               "source": {
+                  "type": "AUTHENTICATION_POLICY_CONTRACT"
+               },
+               "value": "middlename"
+            },
+            "IALlevel": {
                "source": {
                   "type": "TEXT"
                },
-               "value": "value"
+               "value": "IALLevelValue"
+            },
+            "tid": {
+               "source": {
+                  "type": "AUTHENTICATION_POLICY_CONTRACT"
+               },
+               "value": "tid"
+            },
+            "phone": {
+               "source": {
+                  "type": "AUTHENTICATION_POLICY_CONTRACT"
+               },
+               "value": "phone"
+            },
+            "irsUUID": {
+               "source": {
+                  "type": "AUTHENTICATION_POLICY_CONTRACT"
+               },
+               "value": "irsUUID"
+            },
+            "tin": {
+               "source": {
+                  "type": "AUTHENTICATION_POLICY_CONTRACT"
+               },
+               "value": "tin"
+            },
+            "state": {
+               "source": {
+                  "type": "AUTHENTICATION_POLICY_CONTRACT"
+               },
+               "value": "state"
+            },
+            "legacyTrackingID": {
+               "source": {
+                  "type": "NO_MAPPING"
+               }
+            },
+            "email": {
+               "source": {
+                  "type": "AUTHENTICATION_POLICY_CONTRACT"
+               },
+               "value": "email"
+            },
+            "username": {
+               "source": {
+                  "type": "AUTHENTICATION_POLICY_CONTRACT"
+               },
+               "value": "username"
             }
          },
          "issuanceCriteria": {
             "conditionalCriteria": []
          },
-         "id": "default|jackATM",
+         "id": "authz_req|apc.hIF1Nyb2BCgzGoYa|cspATM",
          "context": {
-            "type": "DEFAULT"
+            "type": "AUTHENTICATION_POLICY_CONTRACT",
+            "contextRef": {
+               "id": "hIF1Nyb2BCgzGoYa",
+               "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/authenticationPolicyContracts/hIF1Nyb2BCgzGoYa"
+            }
          },
          "accessTokenManagerRef": {
-            "id": "jackATM",
-            "location": "https://debian-pingfed:9999/pf-admin-api/v1/oauth/accessTokenManagers/jackATM"
+            "id": "cspATM",
+            "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/oauth/accessTokenManagers/cspATM"
+         }
+      },
+      {
+         "attributeSources": [],
+         "attributeContractFulfillment": {
+            "username": {
+               "source": {
+                  "type": "AUTHENTICATION_POLICY_CONTRACT"
+               },
+               "value": "subject"
+            }
+         },
+         "issuanceCriteria": {
+            "conditionalCriteria": []
+         },
+         "id": "authz_req|apc.HiWnhhpr3g6rJrQO|cspLoopback",
+         "context": {
+            "type": "AUTHENTICATION_POLICY_CONTRACT",
+            "contextRef": {
+               "id": "HiWnhhpr3g6rJrQO",
+               "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/authenticationPolicyContracts/HiWnhhpr3g6rJrQO"
+            }
+         },
+         "accessTokenManagerRef": {
+            "id": "cspLoopback",
+            "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/oauth/accessTokenManagers/cspLoopback"
          }
       }
    ]

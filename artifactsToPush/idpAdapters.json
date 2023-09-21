@@ -1,11 +1,287 @@
 {
    "items": [
       {
-         "id": "HTMLForm",
-         "name": "HTMLForm",
+         "id": "cspIdpFragmentPassthru",
+         "name": "cspIdpFragmentPassthru",
+         "pluginDescriptorRef": {
+            "id": "com.pingidentity.adapters.passthrough.idp.PassthroughIdpAdapter",
+            "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/idp/adapters/descriptors/com.pingidentity.adapters.passthrough.idp.PassthroughIdpAdapter"
+         },
+         "configuration": {
+            "tables": [],
+            "fields": []
+         },
+         "attributeContract": {
+            "coreAttributes": [
+               {
+                  "name": "username",
+                  "masked": false,
+                  "pseudonym": true
+               }
+            ],
+            "extendedAttributes": [],
+            "maskOgnlValues": false
+         },
+         "attributeMapping": {
+            "attributeSources": [],
+            "attributeContractFulfillment": {
+               "username": {
+                  "source": {
+                     "type": "ADAPTER"
+                  },
+                  "value": "username"
+               }
+            },
+            "issuanceCriteria": {
+               "conditionalCriteria": []
+            }
+         }
+      },
+      {
+         "id": "cfamLoggerAdapter",
+         "name": "cfamLoggerAdapter",
+         "pluginDescriptorRef": {
+            "id": "com.pingidentity.adapters.passthrough.idp.PassthroughIdpAdapter",
+            "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/idp/adapters/descriptors/com.pingidentity.adapters.passthrough.idp.PassthroughIdpAdapter"
+         },
+         "configuration": {
+            "tables": [],
+            "fields": []
+         },
+         "attributeContract": {
+            "coreAttributes": [
+               {
+                  "name": "username",
+                  "masked": false,
+                  "pseudonym": true
+               }
+            ],
+            "extendedAttributes": [
+               {
+                  "name": "UserAgentHeader",
+                  "masked": false,
+                  "pseudonym": false
+               },
+               {
+                  "name": "GAHeader",
+                  "masked": false,
+                  "pseudonym": false
+               }
+            ],
+            "maskOgnlValues": false
+         },
+         "attributeMapping": {
+            "attributeSources": [],
+            "attributeContractFulfillment": {
+               "UserAgentHeader": {
+                  "source": {
+                     "type": "EXPRESSION"
+                  },
+                  "value": "#req = #this.get(\"context.HttpRequest\").getObjectValue(),\n#header = #req.getHeader(\"User-Agent\") != null ? #req.getHeader(\"User-Agent\").toString() : null"
+               },
+               "GAHeader": {
+                  "source": {
+                     "type": "EXPRESSION"
+                  },
+                  "value": "#cookieToFind=\"_ga\",\n#cookies=#this.get(\"context.HttpRequest\").getObjectValue().getCookies(),\n#cookiesMap=new java.util.HashMap(),\n#cookies.{\n   #cookie=#this,\n   #cookiesMap.put(#cookie.getName(),#cookie.getValue())\n},\n#cookieValue=#cookiesMap.containsKey(#cookieToFind)?#cookiesMap.get(#cookieToFind):\"\""
+               },
+               "username": {
+                  "source": {
+                     "type": "ADAPTER"
+                  },
+                  "value": "username"
+               }
+            },
+            "issuanceCriteria": {
+               "conditionalCriteria": []
+            }
+         }
+      },
+      {
+         "id": "getClientIp",
+         "name": "getClientIp",
+         "pluginDescriptorRef": {
+            "id": "com.pingidentity.adapters.passthrough.idp.PassthroughIdpAdapter",
+            "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/idp/adapters/descriptors/com.pingidentity.adapters.passthrough.idp.PassthroughIdpAdapter"
+         },
+         "configuration": {
+            "tables": [],
+            "fields": []
+         },
+         "attributeContract": {
+            "coreAttributes": [
+               {
+                  "name": "username",
+                  "masked": false,
+                  "pseudonym": true
+               }
+            ],
+            "extendedAttributes": [
+               {
+                  "name": "clientIp",
+                  "masked": false,
+                  "pseudonym": false
+               }
+            ],
+            "maskOgnlValues": false
+         },
+         "attributeMapping": {
+            "attributeSources": [],
+            "attributeContractFulfillment": {
+               "clientIp": {
+                  "source": {
+                     "type": "CONTEXT"
+                  },
+                  "value": "ClientIp"
+               },
+               "username": {
+                  "source": {
+                     "type": "ADAPTER"
+                  },
+                  "value": "username"
+               }
+            },
+            "issuanceCriteria": {
+               "conditionalCriteria": []
+            }
+         }
+      },
+      {
+         "id": "CSPRedirectIAL2",
+         "name": "CSPRedirectIAL2",
+         "pluginDescriptorRef": {
+            "id": "com.pingidentity.adapters.opentoken.IdpAuthnAdapter",
+            "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/idp/adapters/descriptors/com.pingidentity.adapters.opentoken.IdpAuthnAdapter"
+         },
+         "configuration": {
+            "tables": [],
+            "fields": [
+               {
+                  "name": "Password",
+                  "encryptedValue": "OBF:JWE:eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiVWU5YmpCVDdhZyIsInZlcnNpb24iOiIxMS4yLjQuMCJ9..G1STKtj7jRb1iKjd_rSP2A.oxoKNnaBQVMOMOpDSYxXCg.gXRk2JJfu9eXD8_HV-ho-w"
+               },
+               {
+                  "name": "Confirm Password",
+                  "encryptedValue": "OBF:JWE:eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiVWU5YmpCVDdhZyIsInZlcnNpb24iOiIxMS4yLjQuMCJ9..z5jNNmuJsbtwBxzFJeQx4Q.anSziukv3A6odkzQNEnqlA.iwR48OT1bV_xCFz4NJ3_Mg"
+               },
+               {
+                  "name": "Authentication Service",
+                  "value": "https://int-avanti.cobalt.ping-eng.com:3000/cspapp/cspmenuial2.html"
+               },
+               {
+                  "name": "Transport Mode",
+                  "value": "1"
+               },
+               {
+                  "name": "Token Name",
+                  "value": "opentoken"
+               },
+               {
+                  "name": "Cipher Suite",
+                  "value": "2"
+               },
+               {
+                  "name": "Logout Service",
+                  "value": ""
+               },
+               {
+                  "name": "SameSite Cookie",
+                  "value": "3"
+               },
+               {
+                  "name": "Cookie Domain",
+                  "value": ""
+               },
+               {
+                  "name": "Cookie Path",
+                  "value": "/"
+               },
+               {
+                  "name": "Token Lifetime",
+                  "value": "300"
+               },
+               {
+                  "name": "Session Lifetime",
+                  "value": "43200"
+               },
+               {
+                  "name": "Not Before Tolerance",
+                  "value": "0"
+               },
+               {
+                  "name": "Force SunJCE Provider",
+                  "value": "false"
+               },
+               {
+                  "name": "Use Verbose Error Messages",
+                  "value": "false"
+               },
+               {
+                  "name": "Obfuscate Password",
+                  "value": "true"
+               },
+               {
+                  "name": "Session Cookie",
+                  "value": "false"
+               },
+               {
+                  "name": "Secure Cookie",
+                  "value": "true"
+               },
+               {
+                  "name": "HTTP Only Flag",
+                  "value": "true"
+               },
+               {
+                  "name": "Delete Cookie",
+                  "value": ""
+               },
+               {
+                  "name": "Replay Prevention",
+                  "value": "false"
+               },
+               {
+                  "name": "Skip Malformed Attribute Detection",
+                  "value": "false"
+               },
+               {
+                  "name": "Track Authentication Time",
+                  "value": "true"
+               }
+            ]
+         },
+         "attributeContract": {
+            "coreAttributes": [
+               {
+                  "name": "subject",
+                  "masked": false,
+                  "pseudonym": true
+               }
+            ],
+            "extendedAttributes": [],
+            "maskOgnlValues": false
+         },
+         "attributeMapping": {
+            "attributeSources": [],
+            "attributeContractFulfillment": {
+               "subject": {
+                  "source": {
+                     "type": "ADAPTER"
+                  },
+                  "value": "subject"
+               }
+            },
+            "issuanceCriteria": {
+               "conditionalCriteria": []
+            }
+         }
+      },
+      {
+         "id": "SimpleHTML",
+         "name": "SimpleHTML",
          "pluginDescriptorRef": {
             "id": "com.pingidentity.adapters.htmlform.idp.HtmlFormIdpAuthnAdapter",
-            "location": "https://debian-pingfed:9999/pf-admin-api/v1/idp/adapters/descriptors/com.pingidentity.adapters.htmlform.idp.HtmlFormIdpAuthnAdapter"
+            "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/idp/adapters/descriptors/com.pingidentity.adapters.htmlform.idp.HtmlFormIdpAuthnAdapter"
          },
          "configuration": {
             "tables": [
@@ -16,7 +292,7 @@
                         "fields": [
                            {
                               "name": "Password Credential Validator Instance",
-                              "value": "sadf"
+                              "value": "SimplePCV"
                            }
                         ],
                         "defaultRow": false
@@ -297,7 +573,6 @@
                }
             ],
             "extendedAttributes": [],
-            "uniqueUserKeyAttribute": "username",
             "maskOgnlValues": false
          },
          "attributeMapping": {
@@ -322,130 +597,47 @@
          }
       },
       {
-         "id": "X509",
-         "name": "X509",
+         "id": "getCorrelationId",
+         "name": "getCorrelationId",
          "pluginDescriptorRef": {
-            "id": "com.pingidentity.adapters.idp.clientcert.ClientCertIdpAuthnAdapter",
-            "location": "https://debian-pingfed:9999/pf-admin-api/v1/idp/adapters/descriptors/com.pingidentity.adapters.idp.clientcert.ClientCertIdpAuthnAdapter"
+            "id": "com.pingidentity.adapters.passthrough.idp.PassthroughIdpAdapter",
+            "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/idp/adapters/descriptors/com.pingidentity.adapters.passthrough.idp.PassthroughIdpAdapter"
          },
          "configuration": {
-            "tables": [
-               {
-                  "name": "Constrain Acceptable Root Issuers",
-                  "rows": []
-               }
-            ],
-            "fields": [
-               {
-                  "name": "Client Auth Port",
-                  "value": "9032"
-               },
-               {
-                  "name": "Client Auth Hostname",
-                  "value": "debian-pingfed"
-               },
-               {
-                  "name": "Parse Client Cert Subject and Issuer DNs",
-                  "value": "true"
-               },
-               {
-                  "name": "Match Issuer DN in Client X.509 certificate",
-                  "value": "false"
-               },
-               {
-                  "name": "Return Success On SLO",
-                  "value": "true"
-               },
-               {
-                  "name": "Authentication Context",
-                  "value": "Default"
-               },
-               {
-                  "name": "Custom Authentication Context",
-                  "value": ""
-               },
-               {
-                  "name": "Include Subject Alternative Name (SAN)",
-                  "value": "true"
-               }
-            ]
+            "tables": [],
+            "fields": []
          },
          "attributeContract": {
             "coreAttributes": [
                {
-                  "name": "IssuerDN",
-                  "masked": false,
-                  "pseudonym": false
-               },
-               {
-                  "name": "SerialNumber",
-                  "masked": false,
-                  "pseudonym": false
-               },
-               {
-                  "name": "SubjectDN",
-                  "masked": false,
-                  "pseudonym": false
-               },
-               {
-                  "name": "email",
-                  "masked": false,
-                  "pseudonym": false
-               },
-               {
-                  "name": "ClientCertificateChain",
-                  "masked": false,
-                  "pseudonym": false
-               }
-            ],
-            "extendedAttributes": [
-               {
-                  "name": "userPrincipalName",
+                  "name": "username",
                   "masked": false,
                   "pseudonym": true
                }
             ],
-            "uniqueUserKeyAttribute": "userPrincipalName",
+            "extendedAttributes": [
+               {
+                  "name": "correlationId",
+                  "masked": false,
+                  "pseudonym": false
+               }
+            ],
             "maskOgnlValues": false
          },
          "attributeMapping": {
             "attributeSources": [],
             "attributeContractFulfillment": {
-               "IssuerDN": {
-                  "source": {
-                     "type": "ADAPTER"
-                  },
-                  "value": "IssuerDN"
-               },
-               "SerialNumber": {
-                  "source": {
-                     "type": "ADAPTER"
-                  },
-                  "value": "SerialNumber"
-               },
-               "SubjectDN": {
+               "correlationId": {
                   "source": {
                      "type": "EXPRESSION"
                   },
-                  "value": "@org.apache.commons.lang3.StringUtils@substringAfter(SubjectDN, \"CN=\")"
+                  "value": "#log = @org.apache.commons.logging.LogFactory@getLog(\"com.pingidentity.ognl.logger\"),\n#sessionValue=#sessionValue=@org.sourceid.saml20.state.StateMgmtFactory@getExtendedSriV2(#this.get(\"context.HttpRequest\").getObjectValue(), null, null),\n#sessionValue = #sessionValue.split(\"\\\\.\")[0],\n#log.info(\"CORRELATIONIDGENERATED:CorrelationId:\"+#sessionValue),\n#sessionValue"
                },
-               "email": {
+               "username": {
                   "source": {
                      "type": "ADAPTER"
                   },
-                  "value": "email"
-               },
-               "userPrincipalName": {
-                  "source": {
-                     "type": "ADAPTER"
-                  },
-                  "value": "userPrincipalName"
-               },
-               "ClientCertificateChain": {
-                  "source": {
-                     "type": "ADAPTER"
-                  },
-                  "value": "ClientCertificateChain"
+                  "value": "username"
                }
             },
             "issuanceCriteria": {
@@ -454,49 +646,304 @@
          }
       },
       {
-         "id": "IntuneTest",
-         "name": "Intune Test",
+         "id": "HTMLFormIAL2LIP",
+         "name": "HTML Form IAL2 LIP",
          "pluginDescriptorRef": {
-            "id": "com.pingidentity.adapters.idp.intune.IntuneAdapter",
-            "location": "https://debian-pingfed:9999/pf-admin-api/v1/idp/adapters/descriptors/com.pingidentity.adapters.idp.intune.IntuneAdapter"
+            "id": "com.pingidentity.adapters.htmlform.idp.HtmlFormIdpAuthnAdapter",
+            "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/idp/adapters/descriptors/com.pingidentity.adapters.htmlform.idp.HtmlFormIdpAuthnAdapter"
          },
          "configuration": {
-            "tables": [],
+            "tables": [
+               {
+                  "name": "Credential Validators",
+                  "rows": [
+                     {
+                        "fields": [
+                           {
+                              "name": "Password Credential Validator Instance",
+                              "value": "SimplePCV"
+                           }
+                        ],
+                        "defaultRow": false
+                     }
+                  ]
+               }
+            ],
             "fields": [
                {
-                  "name": "Tenant ID",
-                  "value": "7cbab0a3-2172-41aa-b656-9f4ed1f5b4dd"
+                  "name": "Challenge Retries",
+                  "value": "3"
                },
                {
-                  "name": "Application ID",
-                  "value": "4618234d-b5fe-475d-b923-d21825f10fb2"
+                  "name": "Session State",
+                  "value": "None"
                },
                {
-                  "name": "Application Secret",
-                  "encryptedValue": "OBF:JWE:eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiVEZGZmNIUndlRCIsInZlcnNpb24iOiIxMS4yLjUuMCJ9..vhD8IDD5cuxmyNlM39Pqow.c2UP_fEhYFm23jQZ73m42v4fOR0LiUAPmEyZ6uf24SdVrShWhBvUoO85_vtiWBRA.xI4pcPHA74O25yRL6KQIBg"
+                  "name": "Session Timeout",
+                  "value": "60"
                },
                {
-                  "name": "Device lookup attribute",
-                  "value": "deviceId"
+                  "name": "Session Max Timeout",
+                  "value": "480"
+               },
+               {
+                  "name": "Allow Password Changes",
+                  "value": "false"
+               },
+               {
+                  "name": "Password Management System",
+                  "value": ""
+               },
+               {
+                  "name": "Enable 'Remember My Username'",
+                  "value": "false"
+               },
+               {
+                  "name": "Enable 'This is My Device'",
+                  "value": "false"
+               },
+               {
+                  "name": "Change Password Policy Contract",
+                  "value": ""
+               },
+               {
+                  "name": "Change Password Email Notification",
+                  "value": "false"
+               },
+               {
+                  "name": "Show Password Expiring Warning",
+                  "value": "false"
+               },
+               {
+                  "name": "Password Reset Type",
+                  "value": "NONE"
+               },
+               {
+                  "name": "Password Reset Policy Contract",
+                  "value": ""
+               },
+               {
+                  "name": "Revoke Sessions After Password Change Or Reset",
+                  "value": "false"
+               },
+               {
+                  "name": "Account Unlock",
+                  "value": "false"
+               },
+               {
+                  "name": "Local Identity Profile",
+                  "value": "ZjtFbJLUWk1j5Dcc"
+               },
+               {
+                  "name": "Notification Publisher",
+                  "value": ""
+               },
+               {
+                  "name": "Enable Username Recovery",
+                  "value": "false"
+               },
+               {
+                  "name": "Login Template",
+                  "value": "html.form.login.template.html"
+               },
+               {
+                  "name": "Logout Path",
+                  "value": ""
+               },
+               {
+                  "name": "Logout Redirect",
+                  "value": ""
+               },
+               {
+                  "name": "Logout Template",
+                  "value": "idp.logout.success.page.template.html"
+               },
+               {
+                  "name": "Change Password Template",
+                  "value": "html.form.change.password.template.html"
+               },
+               {
+                  "name": "Change Password Message Template",
+                  "value": "html.form.message.template.html"
+               },
+               {
+                  "name": "Password Management System Message Template",
+                  "value": "html.form.message.template.html"
+               },
+               {
+                  "name": "Password Update Timeout",
+                  "value": "30"
+               },
+               {
+                  "name": "Change Password Email Template",
+                  "value": "message-template-end-user-password-change.html"
+               },
+               {
+                  "name": "Expiring Password Warning Template",
+                  "value": "html.form.password.expiring.notification.template.html"
+               },
+               {
+                  "name": "Threshold for Expiring Password Warning",
+                  "value": "7"
+               },
+               {
+                  "name": "Snooze Interval for Expiring Password Warning",
+                  "value": "24"
+               },
+               {
+                  "name": "Require Re-Authentication For Expiring Password Flow",
+                  "value": "false"
+               },
+               {
+                  "name": "Require Re-Authentication for Change Password Flow",
+                  "value": "false"
+               },
+               {
+                  "name": "Require Re-Authentication for Password Reset Flow",
+                  "value": "false"
+               },
+               {
+                  "name": "Login Challenge Template",
+                  "value": "html.form.login.challenge.template.html"
+               },
+               {
+                  "name": "'Remember My Username' Lifetime",
+                  "value": "30"
+               },
+               {
+                  "name": "'This is My Device' Lifetime",
+                  "value": "30"
+               },
+               {
+                  "name": "Allow Username Edits During Chaining",
+                  "value": "false"
+               },
+               {
+                  "name": "Track Authentication Time",
+                  "value": "true"
+               },
+               {
+                  "name": "Post-Password Change Re-Authentication Delay",
+                  "value": "0"
+               },
+               {
+                  "name": "Password Reset One-Time Link Email Template",
+                  "value": "message-template-forgot-password-link.html"
+               },
+               {
+                  "name": "Password Reset One-Time Password Email Template",
+                  "value": "message-template-forgot-password-code.html"
+               },
+               {
+                  "name": "Password Reset Complete Email Template",
+                  "value": "message-template-forgot-password-complete.html"
+               },
+               {
+                  "name": "Password Reset Failed Email Template",
+                  "value": "message-template-forgot-password-failed.html"
+               },
+               {
+                  "name": "Password Reset Username Template",
+                  "value": "forgot-password.html"
+               },
+               {
+                  "name": "Password Reset Code Template",
+                  "value": "forgot-password-resume.html"
+               },
+               {
+                  "name": "Password Reset Template",
+                  "value": "forgot-password-change.html"
+               },
+               {
+                  "name": "Password Reset Error Template",
+                  "value": "forgot-password-error.html"
+               },
+               {
+                  "name": "Password Reset Success Template",
+                  "value": "forgot-password-success.html"
+               },
+               {
+                  "name": "Account Unlock Template",
+                  "value": "account-unlock.html"
+               },
+               {
+                  "name": "Account Unlock Email Template",
+                  "value": "message-template-account-unlock-complete.html"
+               },
+               {
+                  "name": "OTP Length",
+                  "value": "8"
+               },
+               {
+                  "name": "Allowed OTP Character Set",
+                  "value": "23456789BCDFGHJKMNPQRSTVWXZbcdfghjkmnpqrstvwxz"
+               },
+               {
+                  "name": "OTP Time to Live",
+                  "value": "10"
+               },
+               {
+                  "name": "PingID Properties",
+                  "value": ""
+               },
+               {
+                  "name": "Require Verified Email",
+                  "value": "false"
+               },
+               {
+                  "name": "Username Recovery Template",
+                  "value": "username.recovery.template.html"
+               },
+               {
+                  "name": "Username Recovery Info Template",
+                  "value": "username.recovery.info.template.html"
+               },
+               {
+                  "name": "Username Recovery Email Template",
+                  "value": "message-template-username-recovery.html"
+               },
+               {
+                  "name": "CAPTCHA Provider",
+                  "value": ""
+               },
+               {
+                  "name": "CAPTCHA for Authentication",
+                  "value": "false"
+               },
+               {
+                  "name": "CAPTCHA for Password change",
+                  "value": "false"
+               },
+               {
+                  "name": "CAPTCHA for Password Reset",
+                  "value": "false"
+               },
+               {
+                  "name": "CAPTCHA for Username recovery",
+                  "value": "false"
+               },
+               {
+                  "name": "Fail Authentication on Account Lockout",
+                  "value": "false"
                }
             ]
          },
          "attributeContract": {
             "coreAttributes": [
                {
-                  "name": "isCompliant",
-                  "masked": false,
-                  "pseudonym": true
-               },
-               {
-                  "name": "isManaged",
+                  "name": "policy.action",
                   "masked": false,
                   "pseudonym": false
+               },
+               {
+                  "name": "username",
+                  "masked": false,
+                  "pseudonym": true
                }
             ],
             "extendedAttributes": [
                {
-                  "name": "isRooted",
+                  "name": "IALType",
                   "masked": false,
                   "pseudonym": false
                }
@@ -506,23 +953,1504 @@
          "attributeMapping": {
             "attributeSources": [],
             "attributeContractFulfillment": {
-               "isCompliant": {
+               "policy.action": {
                   "source": {
                      "type": "ADAPTER"
                   },
-                  "value": "isCompliant"
+                  "value": "policy.action"
                },
-               "isRooted": {
+               "IALType": {
                   "source": {
-                     "type": "ADAPTER"
+                     "type": "TEXT"
                   },
-                  "value": "isRooted"
+                  "value": "IAL2"
                },
-               "isManaged": {
+               "username": {
                   "source": {
                      "type": "ADAPTER"
                   },
-                  "value": "isManaged"
+                  "value": "username"
+               }
+            },
+            "issuanceCriteria": {
+               "conditionalCriteria": []
+            }
+         }
+      },
+      {
+         "id": "CorrelationIdAdapter",
+         "name": "CorrelationIdAdapter",
+         "pluginDescriptorRef": {
+            "id": "com.pingidentity.ps.pf.adapter.idp.irs.PfCorrelationIdAdapter",
+            "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/idp/adapters/descriptors/com.pingidentity.ps.pf.adapter.idp.irs.PfCorrelationIdAdapter"
+         },
+         "configuration": {
+            "tables": [],
+            "fields": [
+               {
+                  "name": "Correlation ID Chained Attribute Name",
+                  "value": "correlationId"
+               },
+               {
+                  "name": "Session Duration",
+                  "value": "3600000"
+               }
+            ]
+         },
+         "attributeContract": {
+            "coreAttributes": [
+               {
+                  "name": "username",
+                  "masked": false,
+                  "pseudonym": true
+               }
+            ],
+            "extendedAttributes": [
+               {
+                  "name": "correlationId",
+                  "masked": false,
+                  "pseudonym": false
+               }
+            ],
+            "maskOgnlValues": false
+         },
+         "attributeMapping": {
+            "attributeSources": [],
+            "attributeContractFulfillment": {
+               "correlationId": {
+                  "source": {
+                     "type": "EXPRESSION"
+                  },
+                  "value": "#log = @org.apache.commons.logging.LogFactory@getLog(\"com.pingidentity.ognl.logger\"),\n#tidValue=#this.get(\"correlationId\") != null ? #this.get(\"correlationId\").toString() : \"nullvalue\",\n#log.info(\"TIDGENERATED:correlationId:\"+#tidValue),\n#tidValue"
+               },
+               "username": {
+                  "source": {
+                     "type": "ADAPTER"
+                  },
+                  "value": "username"
+               }
+            },
+            "issuanceCriteria": {
+               "conditionalCriteria": []
+            }
+         }
+      },
+      {
+         "id": "CSPRedirectIAL1",
+         "name": "CSPRedirectIAL1",
+         "pluginDescriptorRef": {
+            "id": "com.pingidentity.adapters.opentoken.IdpAuthnAdapter",
+            "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/idp/adapters/descriptors/com.pingidentity.adapters.opentoken.IdpAuthnAdapter"
+         },
+         "configuration": {
+            "tables": [],
+            "fields": [
+               {
+                  "name": "Password",
+                  "encryptedValue": "OBF:JWE:eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiVWU5YmpCVDdhZyIsInZlcnNpb24iOiIxMS4yLjQuMCJ9..Rypji3wv3Dkxalk9oI_o6w.EFY8ma9rnmGiSQ2ExVfUPQ.M_y9kYmOmlAyW4F8z3h-Qg"
+               },
+               {
+                  "name": "Confirm Password",
+                  "encryptedValue": "OBF:JWE:eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiVWU5YmpCVDdhZyIsInZlcnNpb24iOiIxMS4yLjQuMCJ9..zNPUd6ai9AOvO-93CuDtLg.0Pclu56PHx7F6J5wbJ8NXA.Hiczo6akN4weP-GuVRngUw"
+               },
+               {
+                  "name": "Authentication Service",
+                  "value": "https://int-avanti.cobalt.ping-eng.com:3000/cspapp/cspmenuial1.html"
+               },
+               {
+                  "name": "Transport Mode",
+                  "value": "1"
+               },
+               {
+                  "name": "Token Name",
+                  "value": "opentoken"
+               },
+               {
+                  "name": "Cipher Suite",
+                  "value": "2"
+               },
+               {
+                  "name": "Logout Service",
+                  "value": ""
+               },
+               {
+                  "name": "SameSite Cookie",
+                  "value": "3"
+               },
+               {
+                  "name": "Cookie Domain",
+                  "value": ""
+               },
+               {
+                  "name": "Cookie Path",
+                  "value": "/"
+               },
+               {
+                  "name": "Token Lifetime",
+                  "value": "300"
+               },
+               {
+                  "name": "Session Lifetime",
+                  "value": "43200"
+               },
+               {
+                  "name": "Not Before Tolerance",
+                  "value": "0"
+               },
+               {
+                  "name": "Force SunJCE Provider",
+                  "value": "false"
+               },
+               {
+                  "name": "Use Verbose Error Messages",
+                  "value": "false"
+               },
+               {
+                  "name": "Obfuscate Password",
+                  "value": "true"
+               },
+               {
+                  "name": "Session Cookie",
+                  "value": "false"
+               },
+               {
+                  "name": "Secure Cookie",
+                  "value": "true"
+               },
+               {
+                  "name": "HTTP Only Flag",
+                  "value": "true"
+               },
+               {
+                  "name": "Delete Cookie",
+                  "value": ""
+               },
+               {
+                  "name": "Replay Prevention",
+                  "value": "false"
+               },
+               {
+                  "name": "Skip Malformed Attribute Detection",
+                  "value": "false"
+               },
+               {
+                  "name": "Track Authentication Time",
+                  "value": "true"
+               }
+            ]
+         },
+         "attributeContract": {
+            "coreAttributes": [
+               {
+                  "name": "subject",
+                  "masked": false,
+                  "pseudonym": true
+               }
+            ],
+            "extendedAttributes": [],
+            "maskOgnlValues": false
+         },
+         "attributeMapping": {
+            "attributeSources": [],
+            "attributeContractFulfillment": {
+               "subject": {
+                  "source": {
+                     "type": "ADAPTER"
+                  },
+                  "value": "subject"
+               }
+            },
+            "issuanceCriteria": {
+               "conditionalCriteria": []
+            }
+         }
+      },
+      {
+         "id": "CSPRedirectIAL2RefID",
+         "name": "CSPRedirectIAL2RefID",
+         "pluginDescriptorRef": {
+            "id": "com.pingidentity.pf.adapters.referenceid.IdpBackchannelReferenceAuthnAdapter",
+            "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/idp/adapters/descriptors/com.pingidentity.pf.adapters.referenceid.IdpBackchannelReferenceAuthnAdapter"
+         },
+         "configuration": {
+            "tables": [],
+            "fields": [
+               {
+                  "name": "Authentication Endpoint",
+                  "value": "https://ext-avanti.cobalt.ping-eng.com/csppicker/cspial2.php"
+               },
+               {
+                  "name": "User Name",
+                  "value": "csppicker"
+               },
+               {
+                  "name": "Pass Phrase",
+                  "encryptedValue": "OBF:JWE:eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiVWU5YmpCVDdhZyIsInZlcnNpb24iOiIxMS4yLjQuMCJ9..eM4wBfX8rao5i3AsH3H0Ig.rLYud206mhrYXgyMAhghxw.iLwZotq58Mh_FrE2QdriKg"
+               },
+               {
+                  "name": "Allowed Subject DN",
+                  "value": ""
+               },
+               {
+                  "name": "Allowed Issuer DN",
+                  "value": ""
+               },
+               {
+                  "name": "Logout Service Endpoint",
+                  "value": ""
+               },
+               {
+                  "name": "Logout Service Mode",
+                  "value": "NONE"
+               },
+               {
+                  "name": "Prefix Referenced Attributes",
+                  "value": "true"
+               },
+               {
+                  "name": "Ignore Untracked HTTP Parameters",
+                  "value": "false"
+               },
+               {
+                  "name": "Send Request Parameters",
+                  "value": "TRACKED_PARAMS"
+               },
+               {
+                  "name": "Transport Mode",
+                  "value": "0"
+               },
+               {
+                  "name": "Reference Duration",
+                  "value": "3"
+               },
+               {
+                  "name": "Reference Length",
+                  "value": "30"
+               },
+               {
+                  "name": "Require SSL/TLS",
+                  "value": "true"
+               },
+               {
+                  "name": "Outgoing Attribute Format",
+                  "value": "JSON"
+               },
+               {
+                  "name": "Incoming Attribute Format",
+                  "value": "JSON"
+               },
+               {
+                  "name": "Skip Host Name Validation ",
+                  "value": "false"
+               },
+               {
+                  "name": "Relax Password Requirements",
+                  "value": "false"
+               }
+            ]
+         },
+         "attributeContract": {
+            "coreAttributes": [
+               {
+                  "name": "subject",
+                  "masked": false,
+                  "pseudonym": true
+               }
+            ],
+            "extendedAttributes": [
+               {
+                  "name": "returnCSP",
+                  "masked": false,
+                  "pseudonym": false
+               },
+               {
+                  "name": "appname",
+                  "masked": false,
+                  "pseudonym": false
+               },
+               {
+                  "name": "signinSignup",
+                  "masked": false,
+                  "pseudonym": false
+               },
+               {
+                  "name": "language",
+                  "masked": false,
+                  "pseudonym": false
+               }
+            ],
+            "maskOgnlValues": false
+         },
+         "attributeMapping": {
+            "attributeSources": [],
+            "attributeContractFulfillment": {
+               "returnCSP": {
+                  "source": {
+                     "type": "ADAPTER"
+                  },
+                  "value": "returnCSP"
+               },
+               "appname": {
+                  "source": {
+                     "type": "TEXT"
+                  },
+                  "value": "appNameWillGoHere"
+               },
+               "subject": {
+                  "source": {
+                     "type": "ADAPTER"
+                  },
+                  "value": "subject"
+               },
+               "signinSignup": {
+                  "source": {
+                     "type": "TEXT"
+                  },
+                  "value": "signup"
+               },
+               "language": {
+                  "source": {
+                     "type": "TEXT"
+                  },
+                  "value": "english"
+               }
+            },
+            "issuanceCriteria": {
+               "conditionalCriteria": []
+            }
+         }
+      },
+      {
+         "id": "getAppIdAdapter",
+         "name": "getAppIdAdapter",
+         "pluginDescriptorRef": {
+            "id": "com.pingidentity.adapters.passthrough.idp.PassthroughIdpAdapter",
+            "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/idp/adapters/descriptors/com.pingidentity.adapters.passthrough.idp.PassthroughIdpAdapter"
+         },
+         "configuration": {
+            "tables": [],
+            "fields": []
+         },
+         "attributeContract": {
+            "coreAttributes": [
+               {
+                  "name": "username",
+                  "masked": false,
+                  "pseudonym": true
+               }
+            ],
+            "extendedAttributes": [],
+            "maskOgnlValues": false
+         },
+         "attributeMapping": {
+            "attributeSources": [],
+            "attributeContractFulfillment": {
+               "username": {
+                  "source": {
+                     "type": "ADAPTER"
+                  },
+                  "value": "username"
+               }
+            },
+            "issuanceCriteria": {
+               "conditionalCriteria": []
+            }
+         }
+      },
+      {
+         "id": "testJwtRestServiceAdapter",
+         "name": "testJwt rest processor adapter",
+         "pluginDescriptorRef": {
+            "id": "com.pingidentity.ps.pf.adapter.idp.irs.PfJwtRestServiceValidator",
+            "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/idp/adapters/descriptors/com.pingidentity.ps.pf.adapter.idp.irs.PfJwtRestServiceValidator"
+         },
+         "configuration": {
+            "tables": [
+               {
+                  "name": "HTTP Headers Table",
+                  "rows": [
+                     {
+                        "fields": [],
+                        "defaultRow": false
+                     }
+                  ]
+               },
+               {
+                  "name": "Chained Attributes",
+                  "rows": [
+                     {
+                        "fields": [
+                           {
+                              "name": "Chained Attribute Name",
+                              "value": "username"
+                           }
+                        ],
+                        "defaultRow": false
+                     },
+                     {
+                        "fields": [
+                           {
+                              "name": "Chained Attribute Name",
+                              "value": "irsUUID"
+                           }
+                        ],
+                        "defaultRow": false
+                     },
+                     {
+                        "fields": [
+                           {
+                              "name": "Chained Attribute Name",
+                              "value": "mail"
+                           }
+                        ],
+                        "defaultRow": false
+                     }
+                  ]
+               }
+            ],
+            "fields": [
+               {
+                  "name": "Access Token Manager Name",
+                  "value": "sendJwtToken"
+               },
+               {
+                  "name": "REST API - Basic Auth Username",
+                  "value": "testauthuser"
+               },
+               {
+                  "name": "REST API - Basic Auth Password",
+                  "encryptedValue": "OBF:JWE:eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiVWU5YmpCVDdhZyIsInZlcnNpb24iOiIxMS4yLjQuMCJ9..znyIjhCa2Y8kAXcygtOVYQ.7vKBmkT2VpSVIUMHE1ehdw.SBYoQVyj97hM3H5F5aRNUQ"
+               },
+               {
+                  "name": "REST API - Service Endpoint",
+                  "value": "https://httpbin.org/anything"
+               },
+               {
+                  "name": "REST API - Disable SSL/TLS Validation",
+                  "value": "true"
+               },
+               {
+                  "name": "REST API - Disable HTTPS Hostname Verification",
+                  "value": "true"
+               },
+               {
+                  "name": "Maximum HTTP Retries",
+                  "value": "1"
+               },
+               {
+                  "name": "HTTP Timeout Duration",
+                  "value": "30000"
+               },
+               {
+                  "name": "Session Duration",
+                  "value": "3600000"
+               }
+            ]
+         },
+         "attributeContract": {
+            "coreAttributes": [
+               {
+                  "name": "subject",
+                  "masked": false,
+                  "pseudonym": true
+               },
+               {
+                  "name": "httpResponseBody",
+                  "masked": false,
+                  "pseudonym": false
+               },
+               {
+                  "name": "httpResponseCode",
+                  "masked": false,
+                  "pseudonym": false
+               }
+            ],
+            "extendedAttributes": [],
+            "maskOgnlValues": false
+         },
+         "attributeMapping": {
+            "attributeSources": [],
+            "attributeContractFulfillment": {
+               "subject": {
+                  "source": {
+                     "type": "ADAPTER"
+                  },
+                  "value": "subject"
+               }
+            },
+            "issuanceCriteria": {
+               "conditionalCriteria": []
+            }
+         }
+      },
+      {
+         "id": "CustomLoggerOgnlPassthruAdapter",
+         "name": "CustomLoggerOgnlPassthruAdapter",
+         "pluginDescriptorRef": {
+            "id": "com.pingidentity.adapters.passthrough.idp.PassthroughIdpAdapter",
+            "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/idp/adapters/descriptors/com.pingidentity.adapters.passthrough.idp.PassthroughIdpAdapter"
+         },
+         "configuration": {
+            "tables": [],
+            "fields": []
+         },
+         "attributeContract": {
+            "coreAttributes": [
+               {
+                  "name": "username",
+                  "masked": false,
+                  "pseudonym": true
+               }
+            ],
+            "extendedAttributes": [],
+            "maskOgnlValues": false
+         },
+         "attributeMapping": {
+            "attributeSources": [],
+            "attributeContractFulfillment": {
+               "username": {
+                  "source": {
+                     "type": "ADAPTER"
+                  },
+                  "value": "username"
+               }
+            },
+            "issuanceCriteria": {
+               "conditionalCriteria": []
+            }
+         }
+      },
+      {
+         "id": "CSPRedirectIAL1RefID",
+         "name": "CSPRedirectIAL1RefID",
+         "pluginDescriptorRef": {
+            "id": "com.pingidentity.pf.adapters.referenceid.IdpBackchannelReferenceAuthnAdapter",
+            "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/idp/adapters/descriptors/com.pingidentity.pf.adapters.referenceid.IdpBackchannelReferenceAuthnAdapter"
+         },
+         "configuration": {
+            "tables": [],
+            "fields": [
+               {
+                  "name": "Authentication Endpoint",
+                  "value": "https://ext-avanti.cobalt.ping-eng.com/csppicker/cspial1.php"
+               },
+               {
+                  "name": "User Name",
+                  "value": "csppicker"
+               },
+               {
+                  "name": "Pass Phrase",
+                  "encryptedValue": "OBF:JWE:eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiVWU5YmpCVDdhZyIsInZlcnNpb24iOiIxMS4yLjQuMCJ9..7-_t3tGtZcZJgIXkBnPDTg.kOknMEMkPxCqk3eviMvYGg.YpmhzJ78_xFEvic0zSVojQ"
+               },
+               {
+                  "name": "Allowed Subject DN",
+                  "value": ""
+               },
+               {
+                  "name": "Allowed Issuer DN",
+                  "value": ""
+               },
+               {
+                  "name": "Logout Service Endpoint",
+                  "value": ""
+               },
+               {
+                  "name": "Logout Service Mode",
+                  "value": "NONE"
+               },
+               {
+                  "name": "Prefix Referenced Attributes",
+                  "value": "false"
+               },
+               {
+                  "name": "Ignore Untracked HTTP Parameters",
+                  "value": "false"
+               },
+               {
+                  "name": "Send Request Parameters",
+                  "value": "TRACKED_PARAMS"
+               },
+               {
+                  "name": "Transport Mode",
+                  "value": "0"
+               },
+               {
+                  "name": "Reference Duration",
+                  "value": "3"
+               },
+               {
+                  "name": "Reference Length",
+                  "value": "30"
+               },
+               {
+                  "name": "Require SSL/TLS",
+                  "value": "true"
+               },
+               {
+                  "name": "Outgoing Attribute Format",
+                  "value": "JSON"
+               },
+               {
+                  "name": "Incoming Attribute Format",
+                  "value": "JSON"
+               },
+               {
+                  "name": "Skip Host Name Validation ",
+                  "value": "false"
+               },
+               {
+                  "name": "Relax Password Requirements",
+                  "value": "false"
+               }
+            ]
+         },
+         "attributeContract": {
+            "coreAttributes": [
+               {
+                  "name": "subject",
+                  "masked": false,
+                  "pseudonym": true
+               }
+            ],
+            "extendedAttributes": [
+               {
+                  "name": "returnCSP",
+                  "masked": false,
+                  "pseudonym": false
+               },
+               {
+                  "name": "appname",
+                  "masked": false,
+                  "pseudonym": false
+               },
+               {
+                  "name": "signinSignup",
+                  "masked": false,
+                  "pseudonym": false
+               },
+               {
+                  "name": "language",
+                  "masked": false,
+                  "pseudonym": false
+               }
+            ],
+            "maskOgnlValues": false
+         },
+         "attributeMapping": {
+            "attributeSources": [],
+            "attributeContractFulfillment": {
+               "returnCSP": {
+                  "source": {
+                     "type": "ADAPTER"
+                  },
+                  "value": "returnCSP"
+               },
+               "appname": {
+                  "source": {
+                     "type": "TEXT"
+                  },
+                  "value": "appNameWillGoHere"
+               },
+               "subject": {
+                  "source": {
+                     "type": "ADAPTER"
+                  },
+                  "value": "subject"
+               },
+               "signinSignup": {
+                  "source": {
+                     "type": "TEXT"
+                  },
+                  "value": "signin"
+               },
+               "language": {
+                  "source": {
+                     "type": "TEXT"
+                  },
+                  "value": "english"
+               }
+            },
+            "issuanceCriteria": {
+               "conditionalCriteria": []
+            }
+         }
+      },
+      {
+         "id": "TestJwtAdapter2",
+         "name": "TestJwtAdapter 2",
+         "pluginDescriptorRef": {
+            "id": "com.pingidentity.ps.pf.adapter.idp.irs.PfJwtRestServiceValidator",
+            "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/idp/adapters/descriptors/com.pingidentity.ps.pf.adapter.idp.irs.PfJwtRestServiceValidator"
+         },
+         "configuration": {
+            "tables": [
+               {
+                  "name": "Chained Attributes",
+                  "rows": []
+               }
+            ],
+            "fields": [
+               {
+                  "name": "Access Token Manager Name",
+                  "value": "jwtToken"
+               },
+               {
+                  "name": "REST API - Basic Auth Username",
+                  "value": "admin"
+               },
+               {
+                  "name": "REST API - Basic Auth Password",
+                  "encryptedValue": "OBF:JWE:eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiVWU5YmpCVDdhZyIsInZlcnNpb24iOiIxMS4yLjQuMCJ9..rXmjJOT3YD-D3vPYKxuajA.bPuYuGr9xmbfmKBoClXPtQ.rLzf5OPxyseq9kYWhcYISw"
+               },
+               {
+                  "name": "REST API - Service Endpoint",
+                  "value": "https://localhost:55005"
+               },
+               {
+                  "name": "Session Duration",
+                  "value": "3600000"
+               },
+               {
+                  "name": "Maximum HTTP Retries",
+                  "value": "1"
+               },
+               {
+                  "name": "HTTP Timeout Duration",
+                  "value": "30000"
+               },
+               {
+                  "name": "REST API - Disable SSL/TLS Validation",
+                  "value": "false"
+               },
+               {
+                  "name": "REST API - Disable HTTPS Hostname Verification",
+                  "value": "false"
+               }
+            ]
+         },
+         "attributeContract": {
+            "coreAttributes": [
+               {
+                  "name": "subject",
+                  "masked": false,
+                  "pseudonym": true
+               },
+               {
+                  "name": "httpResponseBody",
+                  "masked": false,
+                  "pseudonym": false
+               },
+               {
+                  "name": "httpResponseCode",
+                  "masked": false,
+                  "pseudonym": false
+               }
+            ],
+            "extendedAttributes": [
+               {
+                  "name": "address",
+                  "masked": false,
+                  "pseudonym": false
+               },
+               {
+                  "name": "city",
+                  "masked": false,
+                  "pseudonym": false
+               }
+            ],
+            "maskOgnlValues": false
+         },
+         "attributeMapping": {
+            "attributeSources": [],
+            "attributeContractFulfillment": {
+               "address": {
+                  "source": {
+                     "type": "ADAPTER"
+                  },
+                  "value": "address"
+               },
+               "city": {
+                  "source": {
+                     "type": "ADAPTER"
+                  },
+                  "value": "city"
+               },
+               "subject": {
+                  "source": {
+                     "type": "ADAPTER"
+                  },
+                  "value": "subject"
+               },
+               "httpResponseBody": {
+                  "source": {
+                     "type": "ADAPTER"
+                  },
+                  "value": "httpResponseBody"
+               },
+               "httpResponseCode": {
+                  "source": {
+                     "type": "ADAPTER"
+                  },
+                  "value": "httpResponseCode"
+               }
+            },
+            "issuanceCriteria": {
+               "conditionalCriteria": []
+            }
+         }
+      },
+      {
+         "id": "CSPRedirectIAL1IdP",
+         "name": "CSPRedirectIAL1IdP",
+         "pluginDescriptorRef": {
+            "id": "com.pingidentity.adapters.passthrough.idp.PassthroughIdpAdapter",
+            "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/idp/adapters/descriptors/com.pingidentity.adapters.passthrough.idp.PassthroughIdpAdapter"
+         },
+         "configuration": {
+            "tables": [],
+            "fields": []
+         },
+         "attributeContract": {
+            "coreAttributes": [
+               {
+                  "name": "username",
+                  "masked": false,
+                  "pseudonym": true
+               }
+            ],
+            "extendedAttributes": [
+               {
+                  "name": "appname",
+                  "masked": false,
+                  "pseudonym": false
+               }
+            ],
+            "maskOgnlValues": false
+         },
+         "attributeMapping": {
+            "attributeSources": [],
+            "attributeContractFulfillment": {
+               "appname": {
+                  "source": {
+                     "type": "TEXT"
+                  },
+                  "value": "appnameFromIdp"
+               },
+               "username": {
+                  "source": {
+                     "type": "ADAPTER"
+                  },
+                  "value": "username"
+               }
+            },
+            "issuanceCriteria": {
+               "conditionalCriteria": []
+            }
+         }
+      },
+      {
+         "id": "cspLoopbackPassthru",
+         "name": "cspLoopbackPassthru",
+         "pluginDescriptorRef": {
+            "id": "com.pingidentity.adapters.passthrough.idp.PassthroughIdpAdapter",
+            "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/idp/adapters/descriptors/com.pingidentity.adapters.passthrough.idp.PassthroughIdpAdapter"
+         },
+         "configuration": {
+            "tables": [],
+            "fields": []
+         },
+         "attributeContract": {
+            "coreAttributes": [
+               {
+                  "name": "username",
+                  "masked": false,
+                  "pseudonym": true
+               }
+            ],
+            "extendedAttributes": [],
+            "maskOgnlValues": false
+         },
+         "attributeMapping": {
+            "attributeSources": [],
+            "attributeContractFulfillment": {
+               "username": {
+                  "source": {
+                     "type": "ADAPTER"
+                  },
+                  "value": "username"
+               }
+            },
+            "issuanceCriteria": {
+               "conditionalCriteria": []
+            }
+         }
+      },
+      {
+         "id": "HTMLFormIAL1Lip",
+         "name": "HTML Form IAL1 LIP",
+         "pluginDescriptorRef": {
+            "id": "com.pingidentity.adapters.htmlform.idp.HtmlFormIdpAuthnAdapter",
+            "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/idp/adapters/descriptors/com.pingidentity.adapters.htmlform.idp.HtmlFormIdpAuthnAdapter"
+         },
+         "configuration": {
+            "tables": [
+               {
+                  "name": "Credential Validators",
+                  "rows": [
+                     {
+                        "fields": [
+                           {
+                              "name": "Password Credential Validator Instance",
+                              "value": "SimplePCV"
+                           }
+                        ],
+                        "defaultRow": false
+                     }
+                  ]
+               }
+            ],
+            "fields": [
+               {
+                  "name": "Challenge Retries",
+                  "value": "3"
+               },
+               {
+                  "name": "Session State",
+                  "value": "None"
+               },
+               {
+                  "name": "Session Timeout",
+                  "value": "60"
+               },
+               {
+                  "name": "Session Max Timeout",
+                  "value": "480"
+               },
+               {
+                  "name": "Allow Password Changes",
+                  "value": "false"
+               },
+               {
+                  "name": "Password Management System",
+                  "value": ""
+               },
+               {
+                  "name": "Enable 'Remember My Username'",
+                  "value": "false"
+               },
+               {
+                  "name": "Enable 'This is My Device'",
+                  "value": "false"
+               },
+               {
+                  "name": "Change Password Policy Contract",
+                  "value": ""
+               },
+               {
+                  "name": "Change Password Email Notification",
+                  "value": "false"
+               },
+               {
+                  "name": "Show Password Expiring Warning",
+                  "value": "false"
+               },
+               {
+                  "name": "Password Reset Type",
+                  "value": "NONE"
+               },
+               {
+                  "name": "Password Reset Policy Contract",
+                  "value": ""
+               },
+               {
+                  "name": "Revoke Sessions After Password Change Or Reset",
+                  "value": "false"
+               },
+               {
+                  "name": "Account Unlock",
+                  "value": "false"
+               },
+               {
+                  "name": "Local Identity Profile",
+                  "value": "IVwtRVXjNCp6Y0vc"
+               },
+               {
+                  "name": "Notification Publisher",
+                  "value": ""
+               },
+               {
+                  "name": "Enable Username Recovery",
+                  "value": "false"
+               },
+               {
+                  "name": "Login Template",
+                  "value": "html.form.login.template.html"
+               },
+               {
+                  "name": "Logout Path",
+                  "value": ""
+               },
+               {
+                  "name": "Logout Redirect",
+                  "value": ""
+               },
+               {
+                  "name": "Logout Template",
+                  "value": "idp.logout.success.page.template.html"
+               },
+               {
+                  "name": "Change Password Template",
+                  "value": "html.form.change.password.template.html"
+               },
+               {
+                  "name": "Change Password Message Template",
+                  "value": "html.form.message.template.html"
+               },
+               {
+                  "name": "Password Management System Message Template",
+                  "value": "html.form.message.template.html"
+               },
+               {
+                  "name": "Password Update Timeout",
+                  "value": "30"
+               },
+               {
+                  "name": "Change Password Email Template",
+                  "value": "message-template-end-user-password-change.html"
+               },
+               {
+                  "name": "Expiring Password Warning Template",
+                  "value": "html.form.password.expiring.notification.template.html"
+               },
+               {
+                  "name": "Threshold for Expiring Password Warning",
+                  "value": "7"
+               },
+               {
+                  "name": "Snooze Interval for Expiring Password Warning",
+                  "value": "24"
+               },
+               {
+                  "name": "Require Re-Authentication For Expiring Password Flow",
+                  "value": "false"
+               },
+               {
+                  "name": "Require Re-Authentication for Change Password Flow",
+                  "value": "false"
+               },
+               {
+                  "name": "Require Re-Authentication for Password Reset Flow",
+                  "value": "false"
+               },
+               {
+                  "name": "Login Challenge Template",
+                  "value": "html.form.login.challenge.template.html"
+               },
+               {
+                  "name": "'Remember My Username' Lifetime",
+                  "value": "30"
+               },
+               {
+                  "name": "'This is My Device' Lifetime",
+                  "value": "30"
+               },
+               {
+                  "name": "Allow Username Edits During Chaining",
+                  "value": "false"
+               },
+               {
+                  "name": "Track Authentication Time",
+                  "value": "true"
+               },
+               {
+                  "name": "Post-Password Change Re-Authentication Delay",
+                  "value": "0"
+               },
+               {
+                  "name": "Password Reset One-Time Link Email Template",
+                  "value": "message-template-forgot-password-link.html"
+               },
+               {
+                  "name": "Password Reset One-Time Password Email Template",
+                  "value": "message-template-forgot-password-code.html"
+               },
+               {
+                  "name": "Password Reset Complete Email Template",
+                  "value": "message-template-forgot-password-complete.html"
+               },
+               {
+                  "name": "Password Reset Failed Email Template",
+                  "value": "message-template-forgot-password-failed.html"
+               },
+               {
+                  "name": "Password Reset Username Template",
+                  "value": "forgot-password.html"
+               },
+               {
+                  "name": "Password Reset Code Template",
+                  "value": "forgot-password-resume.html"
+               },
+               {
+                  "name": "Password Reset Template",
+                  "value": "forgot-password-change.html"
+               },
+               {
+                  "name": "Password Reset Error Template",
+                  "value": "forgot-password-error.html"
+               },
+               {
+                  "name": "Password Reset Success Template",
+                  "value": "forgot-password-success.html"
+               },
+               {
+                  "name": "Account Unlock Template",
+                  "value": "account-unlock.html"
+               },
+               {
+                  "name": "Account Unlock Email Template",
+                  "value": "message-template-account-unlock-complete.html"
+               },
+               {
+                  "name": "OTP Length",
+                  "value": "8"
+               },
+               {
+                  "name": "Allowed OTP Character Set",
+                  "value": "23456789BCDFGHJKMNPQRSTVWXZbcdfghjkmnpqrstvwxz"
+               },
+               {
+                  "name": "OTP Time to Live",
+                  "value": "10"
+               },
+               {
+                  "name": "PingID Properties",
+                  "value": ""
+               },
+               {
+                  "name": "Require Verified Email",
+                  "value": "false"
+               },
+               {
+                  "name": "Username Recovery Template",
+                  "value": "username.recovery.template.html"
+               },
+               {
+                  "name": "Username Recovery Info Template",
+                  "value": "username.recovery.info.template.html"
+               },
+               {
+                  "name": "Username Recovery Email Template",
+                  "value": "message-template-username-recovery.html"
+               },
+               {
+                  "name": "CAPTCHA Provider",
+                  "value": ""
+               },
+               {
+                  "name": "CAPTCHA for Authentication",
+                  "value": "false"
+               },
+               {
+                  "name": "CAPTCHA for Password change",
+                  "value": "false"
+               },
+               {
+                  "name": "CAPTCHA for Password Reset",
+                  "value": "false"
+               },
+               {
+                  "name": "CAPTCHA for Username recovery",
+                  "value": "false"
+               },
+               {
+                  "name": "Fail Authentication on Account Lockout",
+                  "value": "false"
+               }
+            ]
+         },
+         "attributeContract": {
+            "coreAttributes": [
+               {
+                  "name": "policy.action",
+                  "masked": false,
+                  "pseudonym": false
+               },
+               {
+                  "name": "username",
+                  "masked": false,
+                  "pseudonym": true
+               }
+            ],
+            "extendedAttributes": [
+               {
+                  "name": "IALType",
+                  "masked": false,
+                  "pseudonym": false
+               }
+            ],
+            "maskOgnlValues": false
+         },
+         "attributeMapping": {
+            "attributeSources": [],
+            "attributeContractFulfillment": {
+               "policy.action": {
+                  "source": {
+                     "type": "ADAPTER"
+                  },
+                  "value": "policy.action"
+               },
+               "IALType": {
+                  "source": {
+                     "type": "TEXT"
+                  },
+                  "value": "IAL1"
+               },
+               "username": {
+                  "source": {
+                     "type": "ADAPTER"
+                  },
+                  "value": "username"
+               }
+            },
+            "issuanceCriteria": {
+               "conditionalCriteria": []
+            }
+         }
+      },
+      {
+         "id": "ErrorPassthruAdapter",
+         "name": "ErrorPassthruAdapter",
+         "pluginDescriptorRef": {
+            "id": "com.pingidentity.adapters.passthrough.idp.PassthroughIdpAdapter",
+            "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/idp/adapters/descriptors/com.pingidentity.adapters.passthrough.idp.PassthroughIdpAdapter"
+         },
+         "configuration": {
+            "tables": [],
+            "fields": []
+         },
+         "attributeContract": {
+            "coreAttributes": [
+               {
+                  "name": "username",
+                  "masked": false,
+                  "pseudonym": true
+               }
+            ],
+            "extendedAttributes": [],
+            "maskOgnlValues": false
+         },
+         "attributeMapping": {
+            "attributeSources": [],
+            "attributeContractFulfillment": {
+               "username": {
+                  "source": {
+                     "type": "ADAPTER"
+                  },
+                  "value": "username"
+               }
+            },
+            "issuanceCriteria": {
+               "conditionalCriteria": []
+            }
+         }
+      },
+      {
+         "id": "CSPRedirect",
+         "name": "CSPRedirect",
+         "pluginDescriptorRef": {
+            "id": "com.pingidentity.adapters.opentoken.IdpAuthnAdapter",
+            "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/idp/adapters/descriptors/com.pingidentity.adapters.opentoken.IdpAuthnAdapter"
+         },
+         "configuration": {
+            "tables": [],
+            "fields": [
+               {
+                  "name": "Password",
+                  "encryptedValue": "OBF:JWE:eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiVWU5YmpCVDdhZyIsInZlcnNpb24iOiIxMS4yLjQuMCJ9..3rI8eszfXby8O8q_c2qMgw.lmx6C91nvPkik6bP_d3f1w.WAyAQhem7EiqQXN2Zi_mHw"
+               },
+               {
+                  "name": "Confirm Password",
+                  "encryptedValue": "OBF:JWE:eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiVWU5YmpCVDdhZyIsInZlcnNpb24iOiIxMS4yLjQuMCJ9..vdlVtYs8SSj5U-Ap-4xPEA.U8gsk4V7girQdfNE-ckFjQ.zj2G-lxAwkvY40T_7CLl4Q"
+               },
+               {
+                  "name": "Authentication Service",
+                  "value": "https://int-avanti.cobalt.ping-eng.com:3000/cspapp/cspmenu.html"
+               },
+               {
+                  "name": "Transport Mode",
+                  "value": "2"
+               },
+               {
+                  "name": "Token Name",
+                  "value": "opentoken"
+               },
+               {
+                  "name": "Cipher Suite",
+                  "value": "2"
+               },
+               {
+                  "name": "Logout Service",
+                  "value": ""
+               },
+               {
+                  "name": "SameSite Cookie",
+                  "value": "3"
+               },
+               {
+                  "name": "Cookie Domain",
+                  "value": ""
+               },
+               {
+                  "name": "Cookie Path",
+                  "value": "/"
+               },
+               {
+                  "name": "Token Lifetime",
+                  "value": "300"
+               },
+               {
+                  "name": "Session Lifetime",
+                  "value": "43200"
+               },
+               {
+                  "name": "Not Before Tolerance",
+                  "value": "0"
+               },
+               {
+                  "name": "Force SunJCE Provider",
+                  "value": "false"
+               },
+               {
+                  "name": "Use Verbose Error Messages",
+                  "value": "false"
+               },
+               {
+                  "name": "Obfuscate Password",
+                  "value": "true"
+               },
+               {
+                  "name": "Session Cookie",
+                  "value": "false"
+               },
+               {
+                  "name": "Secure Cookie",
+                  "value": "true"
+               },
+               {
+                  "name": "HTTP Only Flag",
+                  "value": "true"
+               },
+               {
+                  "name": "Delete Cookie",
+                  "value": "false"
+               },
+               {
+                  "name": "Replay Prevention",
+                  "value": "false"
+               },
+               {
+                  "name": "Skip Malformed Attribute Detection",
+                  "value": "false"
+               },
+               {
+                  "name": "Track Authentication Time",
+                  "value": "true"
+               }
+            ]
+         },
+         "attributeContract": {
+            "coreAttributes": [
+               {
+                  "name": "subject",
+                  "masked": false,
+                  "pseudonym": true
+               }
+            ],
+            "extendedAttributes": [],
+            "maskOgnlValues": false
+         },
+         "attributeMapping": {
+            "attributeSources": [],
+            "attributeContractFulfillment": {
+               "subject": {
+                  "source": {
+                     "type": "ADAPTER"
+                  },
+                  "value": "subject"
+               }
+            },
+            "issuanceCriteria": {
+               "conditionalCriteria": []
+            }
+         }
+      },
+      {
+         "id": "Logger",
+         "name": "Logger",
+         "pluginDescriptorRef": {
+            "id": "com.pingidentity.adapters.passthrough.idp.PassthroughIdpAdapter",
+            "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/idp/adapters/descriptors/com.pingidentity.adapters.passthrough.idp.PassthroughIdpAdapter"
+         },
+         "configuration": {
+            "tables": [],
+            "fields": []
+         },
+         "attributeContract": {
+            "coreAttributes": [
+               {
+                  "name": "username",
+                  "masked": false,
+                  "pseudonym": true
+               }
+            ],
+            "extendedAttributes": [],
+            "maskOgnlValues": false
+         },
+         "attributeMapping": {
+            "attributeSources": [],
+            "attributeContractFulfillment": {
+               "username": {
+                  "source": {
+                     "type": "ADAPTER"
+                  },
+                  "value": "username"
+               }
+            },
+            "issuanceCriteria": {
+               "conditionalCriteria": []
+            }
+         }
+      },
+      {
+         "id": "jwtProcessorPassthru",
+         "name": "jwtProcessorPassthru",
+         "pluginDescriptorRef": {
+            "id": "com.pingidentity.adapters.passthrough.idp.PassthroughIdpAdapter",
+            "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/idp/adapters/descriptors/com.pingidentity.adapters.passthrough.idp.PassthroughIdpAdapter"
+         },
+         "configuration": {
+            "tables": [],
+            "fields": []
+         },
+         "attributeContract": {
+            "coreAttributes": [
+               {
+                  "name": "username",
+                  "masked": false,
+                  "pseudonym": true
+               }
+            ],
+            "extendedAttributes": [],
+            "maskOgnlValues": false
+         },
+         "attributeMapping": {
+            "attributeSources": [],
+            "attributeContractFulfillment": {
+               "username": {
+                  "source": {
+                     "type": "ADAPTER"
+                  },
+                  "value": "username"
                }
             },
             "issuanceCriteria": {

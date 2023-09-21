@@ -1,19 +1,55 @@
 {
    "items": [
       {
-         "id": "vn561yy2nrgg6xf6nvt4i2dxb",
-         "serialNumber": "1686244725725",
-         "subjectDN": "CN=SigningCert, O=JackTest, C=US",
-         "subjectAlternativeNames": [],
-         "issuerDN": "CN=SigningCert, O=JackTest, C=US",
-         "validFrom": "2023-06-08T17:18:45.000Z",
-         "expires": "2033-06-05T17:18:45.000Z",
+         "id": "t9mr5hs7iuj380tl4hgtw59vs",
+         "serialNumber": "1694614748018",
+         "subjectDN": "CN=idmeIAL1CSP, O=IDME, C=US",
+         "subjectAlternativeNames": [
+            "login.retina.ping-eng.com"
+         ],
+         "issuerDN": "CN=idmeIAL1CSP, O=IDME, C=US",
+         "validFrom": "2023-09-13T14:19:08.000Z",
+         "expires": "2024-09-12T14:19:08.000Z",
          "keyAlgorithm": "RSA",
          "keySize": 2048,
          "signatureAlgorithm": "SHA256withRSA",
          "version": 3,
-         "sha1Fingerprint": "B4F8EE36E93FB425180AD63AE41E712AE7E42521",
-         "sha256Fingerprint": "322909D44A8E067116F3FFED9A859BE16F7A1C2CF00FDCE1AAEA7AB0889D00C0",
+         "sha1Fingerprint": "5E4D056AC6AF02D71C534BD952D4F17952F1E75E",
+         "sha256Fingerprint": "DE9649255F034776D37C878CA2FE7E8B1DA3F6A2D1A85C99E98B1E6D916170A2",
+         "status": "VALID"
+      },
+      {
+         "id": "ri43w06oo3fsm3ufezkp6sn1l",
+         "serialNumber": "1683640897159",
+         "subjectDN": "CN=temp, O=Ping Identity, C=US",
+         "subjectAlternativeNames": [
+            "pingprods.lab.net"
+         ],
+         "issuerDN": "CN=temp, O=Ping Identity, C=US",
+         "validFrom": "2023-05-09T14:01:37.000Z",
+         "expires": "2024-05-08T14:01:37.000Z",
+         "keyAlgorithm": "RSA",
+         "keySize": 2048,
+         "signatureAlgorithm": "SHA256withRSA",
+         "version": 3,
+         "sha1Fingerprint": "D8D2BDD88E36C42E543F43397874459BB5464814",
+         "sha256Fingerprint": "68A5AFFC631F20C023A753C79E6BF22AC8F660552C411440E549AE68CCEBC5B5",
+         "status": "VALID"
+      },
+      {
+         "id": "az8aad225oferjzqqggsim7ze",
+         "serialNumber": "1694546607154",
+         "subjectDN": "CN=test2, O=Ping Identity, C=US",
+         "subjectAlternativeNames": [],
+         "issuerDN": "CN=test2, O=Ping Identity, C=US",
+         "validFrom": "2023-09-12T19:23:27.000Z",
+         "expires": "2024-09-11T19:23:27.000Z",
+         "keyAlgorithm": "RSA",
+         "keySize": 2048,
+         "signatureAlgorithm": "SHA256withRSA",
+         "version": 3,
+         "sha1Fingerprint": "751A828DAEA03F51DAF59638025D54F37B1C6CF2",
+         "sha256Fingerprint": "61FE83FDF724623DE4F0F33912832CB3E3B9BFA999CE39BB63DAD83C54D2148F",
          "status": "VALID"
       }
    ]

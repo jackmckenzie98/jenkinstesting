@@ -3,13 +3,13 @@
       {
          "staticJwksEnabled": true,
          "rsaActiveCertRef": {
-            "id": "vn561yy2nrgg6xf6nvt4i2dxb",
-            "location": "https://debian-pingfed:9999/pf-admin-api/v1/keyPairs/signing/vn561yy2nrgg6xf6nvt4i2dxb"
+            "id": "ri43w06oo3fsm3ufezkp6sn1l",
+            "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/keyPairs/signing/ri43w06oo3fsm3ufezkp6sn1l"
          },
          "rsaPublishX5cParameter": false,
          "rsaDecryptionActiveCertRef": {
-            "id": "vn561yy2nrgg6xf6nvt4i2dxb",
-            "location": "https://debian-pingfed:9999/pf-admin-api/v1/keyPairs/signing/vn561yy2nrgg6xf6nvt4i2dxb"
+            "id": "ri43w06oo3fsm3ufezkp6sn1l",
+            "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/keyPairs/signing/ri43w06oo3fsm3ufezkp6sn1l"
          },
          "rsaDecryptionPublishX5cParameter": false
       }

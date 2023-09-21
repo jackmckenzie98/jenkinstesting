@@ -6,7 +6,58 @@
             "enableTargetResourceValidationForSLO": true,
             "enableTargetResourceValidationForIdpDiscovery": true,
             "enableInErrorResourceValidation": true,
-            "whiteList": []
+            "whiteList": [
+               {
+                  "validDomain": "support.pingidentity.com",
+                  "validPath": "",
+                  "allowQueryAndFragment": false,
+                  "requireHttps": true,
+                  "inErrorResource": false,
+                  "targetResourceSSO": false,
+                  "targetResourceSLO": true,
+                  "idpDiscovery": false
+               },
+               {
+                  "validDomain": "sherrilltree.com",
+                  "validPath": "",
+                  "allowQueryAndFragment": true,
+                  "requireHttps": true,
+                  "inErrorResource": false,
+                  "targetResourceSSO": false,
+                  "targetResourceSLO": true,
+                  "idpDiscovery": false
+               },
+               {
+                  "validDomain": "www.google.com",
+                  "validPath": "/search?q=federer+vs+nadal",
+                  "allowQueryAndFragment": false,
+                  "requireHttps": true,
+                  "inErrorResource": false,
+                  "targetResourceSSO": false,
+                  "targetResourceSLO": true,
+                  "idpDiscovery": false
+               },
+               {
+                  "validDomain": "ext-avanti.cobalt.ping-eng.com",
+                  "validPath": "",
+                  "allowQueryAndFragment": true,
+                  "requireHttps": true,
+                  "inErrorResource": false,
+                  "targetResourceSSO": false,
+                  "targetResourceSLO": true,
+                  "idpDiscovery": false
+               },
+               {
+                  "validDomain": "int-avanti.cobalt.ping-eng.com",
+                  "validPath": "",
+                  "allowQueryAndFragment": true,
+                  "requireHttps": true,
+                  "inErrorResource": false,
+                  "targetResourceSSO": false,
+                  "targetResourceSLO": true,
+                  "idpDiscovery": false
+               }
+            ]
          },
          "redirectValidationPartnerSettings": {
             "enableWreplyValidationSLO": true

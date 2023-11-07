@@ -1,157 +1,19 @@
 {
    "items": [
       {
-         "clientId": "csp_loopback",
+         "clientId": "DIFF APP",
          "enabled": true,
          "redirectUris": [
-            "https://ext-avanti.cobalt.ping-eng.com/authn/sp/eyJpc3MiOiJodHRwczpcL1wvZXh0LWF2YW50aS5jb2JhbHQucGluZy1lbmcuY29tXC9hdXRobiJ9/cb.openid",
-            "https://ext-avanti.cobalt.ping-eng.com/authn/sp/eyJpc3MiOiJodHRwczpcL1wvZXh0LWF2YW50aS5jb2JhbHQucGluZy1lbmcuY29tXC9hdXRoblwvbW9jazEifQ/cb.openid"
+            "http://localhost:3000"
          ],
          "grantTypes": [
             "AUTHORIZATION_CODE"
          ],
-         "name": "csp_loopback",
+         "name": "Diff app testing",
          "description": "",
          "logoUrl": "",
-         "modificationDate": "2023-07-07T21:45:19.951Z",
-         "creationDate": "2023-06-30T20:39:53.873Z",
-         "refreshRolling": "SERVER_DEFAULT",
-         "refreshTokenRollingIntervalType": "SERVER_DEFAULT",
-         "persistentGrantExpirationType": "SERVER_DEFAULT",
-         "persistentGrantExpirationTime": 0,
-         "persistentGrantExpirationTimeUnit": "DAYS",
-         "persistentGrantIdleTimeoutType": "SERVER_DEFAULT",
-         "persistentGrantIdleTimeout": 0,
-         "persistentGrantIdleTimeoutTimeUnit": "DAYS",
-         "persistentGrantReuseType": "SERVER_DEFAULT",
-         "allowAuthenticationApiInit": false,
-         "bypassApprovalPage": true,
-         "restrictScopes": false,
-         "requirePushedAuthorizationRequests": false,
-         "requireJwtSecuredAuthorizationResponseMode": false,
-         "restrictedScopes": [],
-         "exclusiveScopes": [],
-         "restrictedResponseTypes": [],
-         "authorizationDetailTypes": [],
-         "defaultAccessTokenManagerRef": {
-            "id": "cspLoopback",
-            "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/oauth/accessTokenManagers/cspLoopback"
-         },
-         "restrictToDefaultAccessTokenManager": false,
-         "validateUsingAllEligibleAtms": false,
-         "oidcPolicy": {
-            "policyGroup": {
-               "id": "cspLoopback",
-               "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/oauth/openIdConnect/policies/cspLoopback"
-            },
-            "grantAccessSessionRevocationApi": false,
-            "grantAccessSessionSessionManagementApi": false,
-            "pingAccessLogoutCapable": false,
-            "pairwiseIdentifierUserType": false
-         },
-         "clientAuth": {
-            "type": "SECRET",
-            "encryptedSecret": "OBF:JWE:eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiVWU5YmpCVDdhZyIsInZlcnNpb24iOiIxMS4yLjQuMCJ9..M9CpokkxcUt7OnoeCP7puw.rYHPfrm_N7cQNPfM69PVqAqWn6Y0TaJxq7LQYQxstawZvW0UeIBsTaDpO-jgBolxh5CLXetMYknj2nQax2GO3yBgToZb3moQE6fZTSB0QIA.M-czqLotcKdv_bVumLw-ZA",
-            "secondarySecrets": []
-         },
-         "extendedParameters": {
-            "authenticationType": {
-               "values": [
-                  "loopback"
-               ]
-            }
-         },
-         "deviceFlowSettingType": "SERVER_DEFAULT",
-         "requireProofKeyForCodeExchange": false,
-         "refreshTokenRollingGracePeriodType": "SERVER_DEFAULT",
-         "clientSecretRetentionPeriodType": "SERVER_DEFAULT",
-         "clientSecretChangedTime": "2023-06-30T20:39:53.000Z",
-         "requireSignedRequests": false
-      },
-      {
-         "clientId": "csp_test1",
-         "enabled": true,
-         "redirectUris": [
-            "https://int-avanti.cobalt.ping-eng.com:3000/pa/oidc/cb",
-            "https://ext-avanti.cobalt.ping-eng.com:3000/pa/oidc/cb",
-            "https://int-avanti.cobalt.ping-eng.com:3000/logingov2/pa/oidc/cb",
-            "https://ext-avanti.cobalt.ping-eng.com/pa/oidc/cb",
-            "https://ext-gemini.ping-eng.com:3000/pacloud/oidc/cb"
-         ],
-         "grantTypes": [
-            "AUTHORIZATION_CODE",
-            "REFRESH_TOKEN"
-         ],
-         "name": "csp_test1",
-         "description": "",
-         "logoUrl": "",
-         "modificationDate": "2023-09-07T18:50:23.652Z",
-         "creationDate": "2023-04-24T21:11:39.037Z",
-         "refreshRolling": "SERVER_DEFAULT",
-         "refreshTokenRollingIntervalType": "SERVER_DEFAULT",
-         "persistentGrantExpirationType": "SERVER_DEFAULT",
-         "persistentGrantExpirationTime": 0,
-         "persistentGrantExpirationTimeUnit": "DAYS",
-         "persistentGrantIdleTimeoutType": "SERVER_DEFAULT",
-         "persistentGrantIdleTimeout": 0,
-         "persistentGrantIdleTimeoutTimeUnit": "DAYS",
-         "persistentGrantReuseType": "SERVER_DEFAULT",
-         "allowAuthenticationApiInit": false,
-         "bypassApprovalPage": true,
-         "restrictScopes": false,
-         "requirePushedAuthorizationRequests": false,
-         "requireJwtSecuredAuthorizationResponseMode": false,
-         "restrictedScopes": [],
-         "exclusiveScopes": [],
-         "restrictedResponseTypes": [],
-         "authorizationDetailTypes": [],
-         "defaultAccessTokenManagerRef": {
-            "id": "cspATM",
-            "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/oauth/accessTokenManagers/cspATM"
-         },
-         "restrictToDefaultAccessTokenManager": false,
-         "validateUsingAllEligibleAtms": false,
-         "oidcPolicy": {
-            "policyGroup": {
-               "id": "cspOidcPolicy",
-               "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/oauth/openIdConnect/policies/cspOidcPolicy"
-            },
-            "grantAccessSessionRevocationApi": false,
-            "grantAccessSessionSessionManagementApi": false,
-            "pingAccessLogoutCapable": true,
-            "pairwiseIdentifierUserType": false
-         },
-         "clientAuth": {
-            "type": "SECRET",
-            "encryptedSecret": "OBF:JWE:eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiVWU5YmpCVDdhZyIsInZlcnNpb24iOiIxMS4yLjQuMCJ9..2YD7KRivNEHpoSDPucb3VQ.5jr5DI6KeoGYc6OMPT8MsUfPTLg97ctVs_LiSthM84vnKvnQk1Rv0TUeni5Vq1ixoYQs35x1WMSW6fKpj6AyWrm5orcZ5OM9JEopLyjwe00.xeoxSALB1zFpExawMQXGkQ",
-            "secondarySecrets": []
-         },
-         "extendedParameters": {
-            "authenticationType": {
-               "values": [
-                  "useacrvalues"
-               ]
-            }
-         },
-         "deviceFlowSettingType": "SERVER_DEFAULT",
-         "requireProofKeyForCodeExchange": false,
-         "refreshTokenRollingGracePeriodType": "SERVER_DEFAULT",
-         "clientSecretRetentionPeriodType": "SERVER_DEFAULT",
-         "clientSecretChangedTime": "2023-07-19T18:01:41.000Z",
-         "requireSignedRequests": false
-      },
-      {
-         "clientId": "pa_rs",
-         "enabled": true,
-         "redirectUris": [],
-         "grantTypes": [
-            "ACCESS_TOKEN_VALIDATION"
-         ],
-         "name": "pa_rs",
-         "description": "",
-         "logoUrl": "",
-         "modificationDate": "2023-08-29T22:56:35.174Z",
-         "creationDate": "2023-08-29T22:56:35.174Z",
+         "modificationDate": "2023-09-14T14:06:08.586Z",
+         "creationDate": "2023-09-14T14:06:08.586Z",
          "refreshRolling": "SERVER_DEFAULT",
          "refreshTokenRollingIntervalType": "SERVER_DEFAULT",
          "persistentGrantExpirationType": "SERVER_DEFAULT",
@@ -173,21 +35,73 @@
          "restrictToDefaultAccessTokenManager": false,
          "validateUsingAllEligibleAtms": false,
          "oidcPolicy": {
-            "grantAccessSessionRevocationApi": true,
+            "grantAccessSessionRevocationApi": false,
             "grantAccessSessionSessionManagementApi": false,
             "pingAccessLogoutCapable": false,
             "pairwiseIdentifierUserType": false
          },
          "clientAuth": {
-            "type": "SECRET",
-            "encryptedSecret": "OBF:JWE:eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiVWU5YmpCVDdhZyIsInZlcnNpb24iOiIxMS4yLjQuMCJ9..HA-nKbSbJVzDd5aKDcuk8A.Z9iCBaxT3O9B1fzLTInueuOp-6mvDwPPJ5Po7qdihx60NEa5OQS0WtpEQouqAkwdJ9Jepiwx9iO3Hg5RK75VqdCb5IQ8Wxo2k0Qb8j_fWbY.ub7g-7P5KuimDLsZswti1Q",
+            "type": "NONE",
             "secondarySecrets": []
          },
          "deviceFlowSettingType": "SERVER_DEFAULT",
          "requireProofKeyForCodeExchange": false,
          "refreshTokenRollingGracePeriodType": "SERVER_DEFAULT",
          "clientSecretRetentionPeriodType": "SERVER_DEFAULT",
-         "clientSecretChangedTime": "2023-08-29T22:56:35.000Z",
+         "requireSignedRequests": false
+      },
+      {
+         "clientId": "jackapp",
+         "enabled": true,
+         "redirectUris": [
+            "http://localhost:3000"
+         ],
+         "grantTypes": [
+            "AUTHORIZATION_CODE"
+         ],
+         "name": "jack's app",
+         "description": "",
+         "logoUrl": "",
+         "modificationDate": "2023-08-10T22:40:36.367Z",
+         "creationDate": "2023-08-10T22:37:26.194Z",
+         "refreshRolling": "SERVER_DEFAULT",
+         "refreshTokenRollingIntervalType": "SERVER_DEFAULT",
+         "persistentGrantExpirationType": "SERVER_DEFAULT",
+         "persistentGrantExpirationTime": 0,
+         "persistentGrantExpirationTimeUnit": "DAYS",
+         "persistentGrantIdleTimeoutType": "SERVER_DEFAULT",
+         "persistentGrantIdleTimeout": 0,
+         "persistentGrantIdleTimeoutTimeUnit": "DAYS",
+         "persistentGrantReuseType": "SERVER_DEFAULT",
+         "allowAuthenticationApiInit": false,
+         "bypassApprovalPage": false,
+         "restrictScopes": false,
+         "requirePushedAuthorizationRequests": false,
+         "requireJwtSecuredAuthorizationResponseMode": false,
+         "restrictedScopes": [],
+         "exclusiveScopes": [],
+         "restrictedResponseTypes": [],
+         "authorizationDetailTypes": [],
+         "defaultAccessTokenManagerRef": {
+            "id": "jackATM",
+            "location": "https://debian-pingfed:9999/pf-admin-api/v1/oauth/accessTokenManagers/jackATM"
+         },
+         "restrictToDefaultAccessTokenManager": false,
+         "validateUsingAllEligibleAtms": false,
+         "oidcPolicy": {
+            "grantAccessSessionRevocationApi": false,
+            "grantAccessSessionSessionManagementApi": false,
+            "pingAccessLogoutCapable": false,
+            "pairwiseIdentifierUserType": false
+         },
+         "clientAuth": {
+            "type": "NONE",
+            "secondarySecrets": []
+         },
+         "deviceFlowSettingType": "SERVER_DEFAULT",
+         "requireProofKeyForCodeExchange": false,
+         "refreshTokenRollingGracePeriodType": "SERVER_DEFAULT",
+         "clientSecretRetentionPeriodType": "SERVER_DEFAULT",
          "requireSignedRequests": false
       }
    ]

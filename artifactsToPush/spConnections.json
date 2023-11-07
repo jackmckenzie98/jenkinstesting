@@ -2,40 +2,36 @@
    "items": [
       {
          "type": "SP",
-         "id": "nnvSY388nHCLwrnfko1Huo_IjiP",
-         "name": "tempCspPickerIAL2",
-         "entityId": "tempCspPickerIAL2",
+         "id": "lcdo5uqYns0T0syy.qg9GooCsVB",
+         "name": "IAMShowcase",
+         "entityId": "IAMShowcase",
          "active": true,
          "contactInfo": {},
-         "loggingMode": "STANDARD",
+         "baseUrl": "https://sptest.iamshowcase.com",
+         "loggingMode": "FULL",
          "virtualEntityIds": [],
+         "metadataReloadSettings": {
+            "metadataUrlRef": {
+               "id": "oZzmjCDAofkwHUSqn01BEp7JP",
+               "location": "https://debian-pingfed:9999/pf-admin-api/v1/metadataUrls/oZzmjCDAofkwHUSqn01BEp7JP"
+            },
+            "enableAutoMetadataUpdate": true
+         },
          "licenseConnectionGroup": "",
          "credentials": {
             "certs": [],
             "signingSettings": {
                "signingKeyPairRef": {
-                  "id": "ri43w06oo3fsm3ufezkp6sn1l",
-                  "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/keyPairs/signing/ri43w06oo3fsm3ufezkp6sn1l"
+                  "id": "vn561yy2nrgg6xf6nvt4i2dxb",
+                  "location": "https://debian-pingfed:9999/pf-admin-api/v1/keyPairs/signing/vn561yy2nrgg6xf6nvt4i2dxb"
                },
                "algorithm": "SHA256withRSA",
                "includeCertInSignature": false,
                "includeRawKeyInSignature": false
             }
          },
-         "extendedProperties": {
-            "authenticationType": {
-               "values": [
-                  "useforcedial"
-               ]
-            },
-            "forcedIALToUse": {
-               "values": [
-                  "ial2"
-               ]
-            }
-         },
-         "modificationDate": "2023-08-28T19:32:50.398Z",
-         "creationDate": "2023-05-09T15:34:31.596Z",
+         "modificationDate": "2023-09-21T13:23:50.170Z",
+         "creationDate": "2023-06-08T22:25:52.106Z",
          "spBrowserSso": {
             "protocol": "SAML20",
             "enabledProfiles": [
@@ -49,12 +45,12 @@
             "ssoServiceEndpoints": [
                {
                   "binding": "POST",
-                  "url": "https://decoder.pingidentity.cloud/saml",
+                  "url": "/acs",
                   "isDefault": true,
                   "index": 0
                }
             ],
-            "signAssertions": false,
+            "signAssertions": true,
             "signResponseAsRequired": true,
             "spSamlIdentityMapping": "STANDARD",
             "requireSignedAuthnRequests": false,
@@ -75,51 +71,40 @@
                      "nameFormat": "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified"
                   }
                ],
-               "extendedAttributes": [
-                  {
-                     "name": "csp",
-                     "nameFormat": "urn:oasis:names:tc:SAML:2.0:attrname-format:basic"
-                  }
-               ]
+               "extendedAttributes": []
             },
-            "adapterMappings": [],
-            "authenticationPolicyContractAssertionMappings": [
+            "adapterMappings": [
                {
                   "attributeSources": [],
                   "attributeContractFulfillment": {
-                     "csp": {
-                        "source": {
-                           "type": "AUTHENTICATION_POLICY_CONTRACT"
-                        },
-                        "value": "csp"
-                     },
                      "SAML_SUBJECT": {
                         "source": {
-                           "type": "AUTHENTICATION_POLICY_CONTRACT"
+                           "type": "ADAPTER"
                         },
-                        "value": "subject"
+                        "value": "userPrincipalName"
                      }
                   },
                   "issuanceCriteria": {
                      "conditionalCriteria": []
                   },
-                  "authenticationPolicyContractRef": {
-                     "id": "hIF1Nyb2BCgzGoYa",
-                     "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/authenticationPolicyContracts/hIF1Nyb2BCgzGoYa"
-                  },
                   "restrictVirtualEntityIds": false,
                   "restrictedVirtualEntityIds": [],
+                  "idpAdapterRef": {
+                     "id": "X509",
+                     "location": "https://debian-pingfed:9999/pf-admin-api/v1/idp/adapters/X509"
+                  },
                   "abortSsoTransactionAsFailSafe": false
                }
-            ]
+            ],
+            "authenticationPolicyContractAssertionMappings": []
          },
          "connectionTargetType": "STANDARD"
       },
       {
          "type": "SP",
-         "id": "dOoh718-q9BUgQQxWYz-0SradN6",
-         "name": "simpleAuthTest",
-         "entityId": "simpleAuthTest",
+         "id": "aQs5NJwyTFiCZr9LQ0OjQrThzgJ",
+         "name": "Okta",
+         "entityId": "https://www.okta.com/saml2/service-provider/spwiljpovidvpbloixgh",
          "active": true,
          "contactInfo": {},
          "loggingMode": "STANDARD",
@@ -129,33 +114,30 @@
             "certs": [],
             "signingSettings": {
                "signingKeyPairRef": {
-                  "id": "ri43w06oo3fsm3ufezkp6sn1l",
-                  "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/keyPairs/signing/ri43w06oo3fsm3ufezkp6sn1l"
+                  "id": "vn561yy2nrgg6xf6nvt4i2dxb",
+                  "location": "https://debian-pingfed:9999/pf-admin-api/v1/keyPairs/signing/vn561yy2nrgg6xf6nvt4i2dxb"
                },
                "algorithm": "SHA256withRSA",
                "includeCertInSignature": false,
                "includeRawKeyInSignature": false
             }
          },
-         "extendedProperties": {
-            "authenticationType": {
-               "values": [
-                  "simpleauthn"
-               ]
-            }
-         },
-         "modificationDate": "2023-08-03T16:08:10.963Z",
-         "creationDate": "2023-08-01T15:02:34.204Z",
+         "modificationDate": "2023-06-19T16:28:17.062Z",
+         "creationDate": "2023-06-19T16:01:02.945Z",
          "spBrowserSso": {
             "protocol": "SAML20",
             "enabledProfiles": [
-               "IDP_INITIATED_SSO"
+               "IDP_INITIATED_SSO",
+               "SP_INITIATED_SSO"
             ],
-            "alwaysSignArtifactResponse": false,
+            "incomingBindings": [
+               "REDIRECT",
+               "POST"
+            ],
             "ssoServiceEndpoints": [
                {
                   "binding": "POST",
-                  "url": "https://decoder.pingidentity.cloud/saml",
+                  "url": "https://trial-5140233.okta.com/sso/saml2/0oa61z2nl4s0YuLDz697",
                   "isDefault": true,
                   "index": 0
                }
@@ -183,7 +165,15 @@
                ],
                "extendedAttributes": [
                   {
-                     "name": "csp",
+                     "name": "firstName",
+                     "nameFormat": "urn:oasis:names:tc:SAML:2.0:attrname-format:basic"
+                  },
+                  {
+                     "name": "lastName",
+                     "nameFormat": "urn:oasis:names:tc:SAML:2.0:attrname-format:basic"
+                  },
+                  {
+                     "name": "login",
                      "nameFormat": "urn:oasis:names:tc:SAML:2.0:attrname-format:basic"
                   }
                ]
@@ -193,136 +183,37 @@
                {
                   "attributeSources": [],
                   "attributeContractFulfillment": {
-                     "csp": {
+                     "firstName": {
                         "source": {
-                           "type": "AUTHENTICATION_POLICY_CONTRACT"
+                           "type": "TEXT"
                         },
-                        "value": "csp"
+                        "value": "Jack"
+                     },
+                     "lastName": {
+                        "source": {
+                           "type": "TEXT"
+                        },
+                        "value": "McKenzie"
+                     },
+                     "login": {
+                        "source": {
+                           "type": "TEXT"
+                        },
+                        "value": "jack.mckenzie@pingfed.com"
                      },
                      "SAML_SUBJECT": {
                         "source": {
-                           "type": "AUTHENTICATION_POLICY_CONTRACT"
+                           "type": "TEXT"
                         },
-                        "value": "subject"
+                        "value": "jack.mckenzie@pingfed.com"
                      }
                   },
                   "issuanceCriteria": {
                      "conditionalCriteria": []
                   },
                   "authenticationPolicyContractRef": {
-                     "id": "hIF1Nyb2BCgzGoYa",
-                     "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/authenticationPolicyContracts/hIF1Nyb2BCgzGoYa"
-                  },
-                  "restrictVirtualEntityIds": false,
-                  "restrictedVirtualEntityIds": [],
-                  "abortSsoTransactionAsFailSafe": false
-               }
-            ]
-         },
-         "connectionTargetType": "STANDARD"
-      },
-      {
-         "type": "SP",
-         "id": "DKCT43fjE_GF86q-CLbXbZQV5oo",
-         "name": "tempCspPickerIAL1",
-         "entityId": "tempCspPickerIAL1",
-         "active": true,
-         "contactInfo": {},
-         "loggingMode": "STANDARD",
-         "virtualEntityIds": [],
-         "licenseConnectionGroup": "",
-         "credentials": {
-            "certs": [],
-            "signingSettings": {
-               "signingKeyPairRef": {
-                  "id": "ri43w06oo3fsm3ufezkp6sn1l",
-                  "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/keyPairs/signing/ri43w06oo3fsm3ufezkp6sn1l"
-               },
-               "algorithm": "SHA256withRSA",
-               "includeCertInSignature": false,
-               "includeRawKeyInSignature": false
-            }
-         },
-         "extendedProperties": {
-            "authenticationType": {
-               "values": [
-                  "useforcedial"
-               ]
-            },
-            "forcedIALToUse": {
-               "values": [
-                  "ial1"
-               ]
-            }
-         },
-         "modificationDate": "2023-06-02T19:48:26.804Z",
-         "creationDate": "2023-05-09T14:01:46.040Z",
-         "spBrowserSso": {
-            "protocol": "SAML20",
-            "enabledProfiles": [
-               "IDP_INITIATED_SSO"
-            ],
-            "alwaysSignArtifactResponse": false,
-            "ssoServiceEndpoints": [
-               {
-                  "binding": "POST",
-                  "url": "https://decoder.pingidentity.cloud/saml",
-                  "isDefault": true,
-                  "index": 0
-               }
-            ],
-            "signAssertions": false,
-            "signResponseAsRequired": true,
-            "spSamlIdentityMapping": "STANDARD",
-            "requireSignedAuthnRequests": false,
-            "assertionLifetime": {
-               "minutesBefore": 5,
-               "minutesAfter": 5
-            },
-            "encryptionPolicy": {
-               "encryptAssertion": false,
-               "encryptSloSubjectNameId": false,
-               "sloSubjectNameIDEncrypted": false,
-               "encryptedAttributes": []
-            },
-            "attributeContract": {
-               "coreAttributes": [
-                  {
-                     "name": "SAML_SUBJECT",
-                     "nameFormat": "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified"
-                  }
-               ],
-               "extendedAttributes": [
-                  {
-                     "name": "csp",
-                     "nameFormat": "urn:oasis:names:tc:SAML:2.0:attrname-format:basic"
-                  }
-               ]
-            },
-            "adapterMappings": [],
-            "authenticationPolicyContractAssertionMappings": [
-               {
-                  "attributeSources": [],
-                  "attributeContractFulfillment": {
-                     "csp": {
-                        "source": {
-                           "type": "AUTHENTICATION_POLICY_CONTRACT"
-                        },
-                        "value": "csp"
-                     },
-                     "SAML_SUBJECT": {
-                        "source": {
-                           "type": "AUTHENTICATION_POLICY_CONTRACT"
-                        },
-                        "value": "subject"
-                     }
-                  },
-                  "issuanceCriteria": {
-                     "conditionalCriteria": []
-                  },
-                  "authenticationPolicyContractRef": {
-                     "id": "hIF1Nyb2BCgzGoYa",
-                     "location": "https://ip-10-101-11-241:9999/pf-admin-api/v1/authenticationPolicyContracts/hIF1Nyb2BCgzGoYa"
+                     "id": "OBVvfPs6s6jz8G4p",
+                     "location": "https://debian-pingfed:9999/pf-admin-api/v1/authenticationPolicyContracts/OBVvfPs6s6jz8G4p"
                   },
                   "restrictVirtualEntityIds": false,
                   "restrictedVirtualEntityIds": [],
